@@ -12,7 +12,6 @@ monitorable = false
 script = ExtResource("1_ovhb6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-102, 45)
 shape = SubResource("RectangleShape2D_4l33r")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -11,6 +11,7 @@ region = Rect2(17, 111, 16, 16)
 script = ExtResource("1_4u1ae")
 ITEM_NAME = "Stone"
 ITEM_TEXTURE = SubResource("AtlasTexture_1xq37")
+ITEM_TYPE = ""
 STACKABLE = true
 HOVER_TEXT = "A stone used for stuff."
 STATIC = false

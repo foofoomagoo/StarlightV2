@@ -4,7 +4,9 @@ extends Node
 
 var can_show_seed_grid: bool = false
 
+
 func on_day_tick():
+	print("Day tick")
 	var current_day = TimeManager.day
 	var non_empty = crops.filter(empty_crops)
 	

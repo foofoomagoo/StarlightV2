@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://chbuywgw6rtw8"]
+[gd_scene load_steps=6 format=3 uid="uid://chbuywgw6rtw8"]
 
 [ext_resource type="TileSet" uid="uid://chp0dxyplxetx" path="res://tilesets/planet.tres" id="1_himro"]
+[ext_resource type="Script" path="res://scenes/main/levels/planet.gd" id="1_yf2dr"]
 [ext_resource type="Script" path="res://scenes/main/levels/TileMap.gd" id="2_i7e1c"]
 [ext_resource type="PackedScene" uid="uid://br0a0ehkagcb7" path="res://scenes/common/tree.tscn" id="2_y22i4"]
+[ext_resource type="PackedScene" uid="uid://dg00h63ep7hqm" path="res://scenes/common/scene_transition.tscn" id="4_uhfbx"]
 
 [node name="Planet" type="Node2D"]
+script = ExtResource("1_yf2dr")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -21,3 +24,7 @@ y_sort_enabled = true
 
 [node name="Tree" parent="YSort" instance=ExtResource("2_y22i4")]
 position = Vector2(40, 31)
+
+[node name="SceneTransition" parent="." instance=ExtResource("4_uhfbx")]
+position = Vector2(73, 27)
+scene_to_load = "res://scenes/main/levels/starting_area.tscn"

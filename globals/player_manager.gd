@@ -30,7 +30,6 @@ func heal(data: ItemDataConsumable) -> void:
 	InventoryManager.subtract_quantity()
 	player_health = clamp(player_health + data.heal_value, 0, 8)
 	health_tick.emit(player_health)
-	print(player_health)
 
 #	Called when a tool is used from hotbar
 func use_tool(data) -> void:
@@ -53,5 +52,12 @@ func use_energy(amount: int):
 func place_seed(data: DataCrop, index: int):
 	if timer.is_stopped():
 		timer.start()
-		print("Player manager")
 		player._seed(data)
+
+
+func replenish():
+	player_energy = 100
+	player_health = 8
+	
+	health_tick.emit(8)
+	energy_tick.emit(-100)

@@ -8,8 +8,8 @@
 atlas = ExtResource("2_uofgh")
 region = Rect2(128, 144, 16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_or43p"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06dov"]
+size = Vector2(16, 16)
 
 [node name="Crop" type="Node2D"]
 script = ExtResource("1_mhvpr")
@@ -28,7 +28,7 @@ monitoring = false
 interact_type = "crop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-shape = SubResource("CircleShape2D_or43p")
+shape = SubResource("RectangleShape2D_06dov")
 
 [connection signal="mouse_entered" from="InteractArea" to="." method="_on_interact_area_mouse_entered"]
 [connection signal="mouse_exited" from="InteractArea" to="." method="_on_interact_area_mouse_exited"]

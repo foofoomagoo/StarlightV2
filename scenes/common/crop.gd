@@ -44,8 +44,10 @@ func load_empty_crop():
 
 
 func load_crop_info():
+	print(grow_state)
 	days_to_grow = crop.time_to_grow
 	sprite.texture  = crop.crop_texture
+	sprite.hframes = crop.phases
 	sprite.set_frame(grow_state)
 	if watered:
 		ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
@@ -62,7 +64,7 @@ func set_crop(data: DataCrop):
 func plant_crop():
 	day_planted = TimeManager.day
 	sprite.set_frame(grow_state)
-	grow_state = 1
+	grow_state = 0
 	sprite.hframes = crop.phases
 	
 	var crop_info: Dictionary = {

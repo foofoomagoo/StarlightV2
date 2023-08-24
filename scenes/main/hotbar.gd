@@ -26,7 +26,7 @@ func _highlight(index: int) -> void:
 	children[index].color = Color("#8c714d")
 
 func _process(delta):
-	if Input.is_action_pressed("use_item"):
+	if Input.is_action_pressed("use_item") and !Globals.disable_controls:
 		var slot_data = inventory.slot_datas[selected_index]
 		if slot_data:
 			slot_data.item_data.use(selected_index)

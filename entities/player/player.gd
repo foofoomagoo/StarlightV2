@@ -11,7 +11,8 @@ var current_tool: int
 func _ready():
 	PlayerManager.player = self
 	animation.active = true
-
+	animation.get("parameters/playback").travel("Idle")
+	animation["parameters/conditions/idle"] = true
 
 func _physics_process(delta):
 	if Globals.can_move:

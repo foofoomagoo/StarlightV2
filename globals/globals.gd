@@ -7,7 +7,7 @@ var new_game: bool
 
 var game_paused: bool
 var can_move: bool = true
-var disable_controls: bool
+var disable_controls: bool = false
 var store_player
 
 

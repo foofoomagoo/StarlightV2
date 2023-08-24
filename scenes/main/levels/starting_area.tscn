@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgn8js73sdli2"]
+
+[ext_resource type="Texture2D" uid="uid://biub0x00hducd" path="res://scenes/main/levels/ship.png" id="1_h25xi"]
+[ext_resource type="PackedScene" uid="uid://dg00h63ep7hqm" path="res://scenes/common/scene_transition.tscn" id="2_b8gjr"]
+[ext_resource type="Script" path="res://scenes/main/levels/Sleep.gd" id="3_hdmnm"]
+
+[node name="StartingArea" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.423529, 0.384314, 0.470588, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h25xi")
+
+[node name="YSort" type="Node2D" parent="."]
+
+[node name="PlanetTransition" parent="." instance=ExtResource("2_b8gjr")]
+position = Vector2(-3, -38)
+scene_to_load = "res://scenes/main/levels/planet.tscn"
+
+[node name="Sleep" parent="." instance=ExtResource("2_b8gjr")]
+position = Vector2(124, 9)
+script = ExtResource("3_hdmnm")

@@ -52,11 +52,12 @@ func end_day():
 
 
 func sleep() -> void:
+	minute = 0
 	hour = 8
 	day += 1
 	if day >= 30:
 		day = 1
 		year += 1
 		
-#	CropManager.on_day_tick()
+	CropManager.on_day_tick()
 	time_tick.emit()
