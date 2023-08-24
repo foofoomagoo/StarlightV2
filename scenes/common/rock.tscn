@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://cur2s3hxekv4i"]
+
+[ext_resource type="Script" path="res://scenes/common/environment_object.gd" id="1_1bvtc"]
+[ext_resource type="Resource" uid="uid://cblavw2b21s4d" path="res://repo/rock.tres" id="2_kq7lb"]
+[ext_resource type="Texture2D" uid="uid://dae4ci681g3tb" path="res://assets/global.png" id="3_2sq57"]
+[ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="4_02gvr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kxb0"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_aoec5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_87brb"]
+resource_name = "destroyed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(6.72716, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_0vqu3"]
+resource_name = "shake"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 15), Vector2(1, 15), Vector2(0, 15), Vector2(-1, 15), Vector2(0, 15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_voler"]
+_data = {
+"RESET": SubResource("Animation_aoec5"),
+"destroyed": SubResource("Animation_87brb"),
+"shake": SubResource("Animation_0vqu3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uyujp"]
+radius = 13.0
+
+[node name="Rock" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_1bvtc")
+environment_data = ExtResource("2_kq7lb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("3_2sq57")
+offset = Vector2(0, -15)
+region_enabled = true
+region_rect = Rect2(0, 146, 16, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_2kxb0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_voler")
+}
+
+[node name="InteractArea" parent="." instance=ExtResource("4_02gvr")]
+collision_layer = 8
+collision_mask = 2
+interact_type = "environment"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_uyujp")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="InteractArea" to="." method="_on_interact_area_mouse_entered"]
+[connection signal="mouse_exited" from="InteractArea" to="." method="_on_interact_area_mouse_exited"]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataTool" load_steps=4 format=3 uid="uid://cuc5w2xs2fksu"]
+
+[ext_resource type="Texture2D" uid="uid://b8vlql54rm7o4" path="res://entities/player/pickaxe.png" id="1_tu7n2"]
+[ext_resource type="Script" path="res://classes/item_data_tool.gd" id="1_vryvn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou0c7"]
+atlas = ExtResource("1_tu7n2")
+region = Rect2(14, 78, 16, 16)
+
+[resource]
+script = ExtResource("1_vryvn")
+delay = 1.0
+tool = 1
+ITEM_NAME = "Pickaxe"
+ITEM_TEXTURE = SubResource("AtlasTexture_ou0c7")
+ITEM_TYPE = "Tool"
+STACKABLE = false
+HOVER_TEXT = "Used for breaking rocks."
+STATIC = false
+SELL_VALUE = 0

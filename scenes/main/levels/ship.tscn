@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfm4dr56id0be"]
+
+[ext_resource type="Script" path="res://scenes/main/levels/ship.gd" id="1_twp0k"]
+[ext_resource type="Texture2D" uid="uid://biub0x00hducd" path="res://scenes/main/levels/ship.png" id="2_x2fai"]
+[ext_resource type="PackedScene" uid="uid://dg00h63ep7hqm" path="res://scenes/common/scene_transition.tscn" id="3_7khfk"]
+[ext_resource type="PackedScene" uid="uid://chbuywgw6rtw8" path="res://scenes/main/levels/planet.tscn" id="4_wxdl6"]
+
+[sub_resource type="Gradient" id="Gradient_bs324"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bvd8l"]
+gradient = SubResource("Gradient_bs324")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.487179, 0.555556)
+fill_to = Vector2(0.153, 0.244)
+
+[node name="Ship" type="Node2D"]
+script = ExtResource("1_twp0k")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.305882, 0.278431, 0.329412, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x2fai")
+
+[node name="SceneTransition" parent="." instance=ExtResource("3_7khfk")]
+position = Vector2(99, -86)
+scene_to_load = ExtResource("4_wxdl6")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-168, -48)
+texture = SubResource("GradientTexture2D_bvd8l")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-116, -48)
+texture = SubResource("GradientTexture2D_bvd8l")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-41, -47)
+texture = SubResource("GradientTexture2D_bvd8l")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(97, -4)
+texture = SubResource("GradientTexture2D_bvd8l")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(153, -4)
+texture = SubResource("GradientTexture2D_bvd8l")

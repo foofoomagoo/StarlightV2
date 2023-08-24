@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://d1ibn3nwxn8o0"]
+
+[ext_resource type="Script" path="res://classes/item_data.gd" id="1_rup4t"]
+[ext_resource type="Texture2D" uid="uid://cg5tdqxrstk2l" path="res://ui/UI_all.png" id="1_tq2px"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85fp1"]
+atlas = ExtResource("1_tq2px")
+region = Rect2(305, 145, 14, 14)
+
+[resource]
+script = ExtResource("1_rup4t")
+ITEM_NAME = "Wood"
+ITEM_TEXTURE = SubResource("AtlasTexture_85fp1")
+ITEM_TYPE = ""
+STACKABLE = true
+HOVER_TEXT = "A wood used for building stuff."
+STATIC = false
+SELL_VALUE = 5

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://bycqpw5ow4g0p"]
+
+[ext_resource type="Texture2D" uid="uid://bfbx22cbd3v6" path="res://assets/seeds.png" id="1_nrfiu"]
+[ext_resource type="Script" path="res://classes/item_data_seed.gd" id="1_o8mow"]
+[ext_resource type="Resource" uid="uid://pk7e6yjutqrk" path="res://repo/crops/crop_carrot.tres" id="2_hkork"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml2wg"]
+atlas = ExtResource("1_nrfiu")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_o8mow")
+crop_data = ExtResource("2_hkork")
+ITEM_NAME = "Carrot Seed"
+ITEM_TEXTURE = SubResource("AtlasTexture_ml2wg")
+ITEM_TYPE = "Seed"
+STACKABLE = true
+HOVER_TEXT = "Plant this seed and grow a carrot!"
+STATIC = false
+SELL_VALUE = 10

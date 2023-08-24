@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://uvpyrcky7g6w"]
+
+[ext_resource type="Script" path="res://ui/player_stats.gd" id="1_2fbwk"]
+[ext_resource type="Texture2D" uid="uid://cg5tdqxrstk2l" path="res://ui/UI_all.png" id="1_hmc52"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0uth"]
+atlas = ExtResource("1_hmc52")
+region = Rect2(48, 296, 16, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugvnl"]
+atlas = ExtResource("1_hmc52")
+region = Rect2(4, 312, 8, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inbvg"]
+atlas = ExtResource("1_hmc52")
+region = Rect2(4, 312, 8, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jpnj"]
+atlas = ExtResource("1_hmc52")
+region = Rect2(64, 296, 16, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arshf"]
+atlas = ExtResource("1_hmc52")
+region = Rect2(4, 324, 8, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e8rfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8i7m"]
+bg_color = Color(0.742188, 0.550781, 0, 1)
+
+[node name="PlayerStats" type="Control"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+script = ExtResource("1_2fbwk")
+
+[node name="HealthContainer" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -11.0
+offset_right = 22.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_c0uth")
+stretch_mode = 3
+
+[node name="Health" type="TextureRect" parent="HealthContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 12.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_ugvnl")
+stretch_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthContainer"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 12.0
+offset_bottom = 48.0
+max_value = 8.0
+value = 4.0
+rounded = true
+fill_mode = 3
+texture_progress = SubResource("AtlasTexture_inbvg")
+
+[node name="EnergyContainer" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -11.0
+offset_right = 49.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_8jpnj")
+stretch_mode = 3
+
+[node name="Energy" type="VBoxContainer" parent="EnergyContainer"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 48.0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="EnergyTick" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick2" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick3" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick4" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick5" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick6" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick7" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="EnergyTick8" type="TextureRect" parent="EnergyContainer/Energy"]
+modulate = Color(0.866667, 1, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_arshf")
+stretch_mode = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 33.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_e8rfs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n8i7m")
+step = 1.0
+value = 100.0
+fill_mode = 3
+show_percentage = false

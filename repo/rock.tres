@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnvironmentData" load_steps=3 format=3 uid="uid://cblavw2b21s4d"]
+
+[ext_resource type="Resource" uid="uid://di58dwmhgpq85" path="res://repo/stone.tres" id="1_h0iip"]
+[ext_resource type="Script" path="res://classes/environment_data.gd" id="1_i5pt4"]
+
+[resource]
+script = ExtResource("1_i5pt4")
+NAME = "Rock"
+TYPE = 1
+LOOT = ExtResource("1_h0iip")
+LOOT_QUANTITY = 3
+INTERACT_LOOT_QUANTITY = 0
+HEALTH = 20
+TOOL_TYPE = 1

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataTool" load_steps=4 format=3 uid="uid://dvrrh7lwhvf07"]
+
+[ext_resource type="Texture2D" uid="uid://cyqs08he0nuh6" path="res://entities/player/axe/tool/axe.png" id="1_3mb62"]
+[ext_resource type="Script" path="res://classes/item_data_tool.gd" id="1_waa83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blb8l"]
+atlas = ExtResource("1_3mb62")
+region = Rect2(15, 78, 16, 16)
+
+[resource]
+script = ExtResource("1_waa83")
+delay = 1.0
+tool = 0
+ITEM_NAME = "Axe"
+ITEM_TEXTURE = SubResource("AtlasTexture_blb8l")
+ITEM_TYPE = "Tool"
+STACKABLE = false
+HOVER_TEXT = "An axe used for chopping trees."
+STATIC = false
+SELL_VALUE = 0

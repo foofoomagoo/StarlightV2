@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=15 format=3 uid="uid://w7uamnv0rjv8"]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory_data.gd" id="1_5xkao"]
+[ext_resource type="Resource" uid="uid://bpxssublbiu2f" path="res://repo/carrot.tres" id="2_215wi"]
+[ext_resource type="Resource" uid="uid://dvrrh7lwhvf07" path="res://repo/tools/axe.tres" id="2_stk0m"]
+[ext_resource type="Script" path="res://ui/inventory/slot_data.gd" id="3_mwsmf"]
+[ext_resource type="Resource" uid="uid://cuc5w2xs2fksu" path="res://repo/tools/pickaxe.tres" id="5_eanhm"]
+[ext_resource type="Resource" uid="uid://c62ndopd6khb4" path="res://repo/tools/hoe.tres" id="6_0bkgu"]
+[ext_resource type="Resource" uid="uid://bbmcn1d86w1j0" path="res://repo/tools/watering_can.tres" id="7_gtyei"]
+[ext_resource type="Resource" uid="uid://bycqpw5ow4g0p" path="res://repo/seeds/seed_carrot.tres" id="8_5m2dt"]
+
+[sub_resource type="Resource" id="Resource_k0cuu"]
+script = ExtResource("3_mwsmf")
+item_data = ExtResource("2_stk0m")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_wbqij"]
+script = ExtResource("3_mwsmf")
+item_data = ExtResource("2_215wi")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_othpj"]
+script = ExtResource("3_mwsmf")
+item_data = ExtResource("5_eanhm")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ko71p"]
+script = ExtResource("3_mwsmf")
+item_data = ExtResource("6_0bkgu")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_td7pc"]
+script = ExtResource("3_mwsmf")
+item_data = ExtResource("7_gtyei")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_5psxr"]
+script = ExtResource("3_mwsmf")
+item_data = ExtResource("8_5m2dt")
+quantity = 1
+
+[resource]
+script = ExtResource("1_5xkao")
+slot_datas = Array[ExtResource("3_mwsmf")]([SubResource("Resource_k0cuu"), SubResource("Resource_wbqij"), SubResource("Resource_othpj"), SubResource("Resource_ko71p"), SubResource("Resource_td7pc"), SubResource("Resource_5psxr"), null, null, null])

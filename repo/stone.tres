@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://di58dwmhgpq85"]
+
+[ext_resource type="Script" path="res://classes/item_data.gd" id="1_4u1ae"]
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="1_kywpy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xq37"]
+atlas = ExtResource("1_kywpy")
+region = Rect2(17, 111, 16, 16)
+
+[resource]
+script = ExtResource("1_4u1ae")
+ITEM_NAME = "Stone"
+ITEM_TEXTURE = SubResource("AtlasTexture_1xq37")
+STACKABLE = true
+HOVER_TEXT = "A stone used for stuff."
+STATIC = false
+SELL_VALUE = 5

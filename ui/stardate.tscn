@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dys57p44ksvf"]
+
+[ext_resource type="Script" path="res://scenes/main/Stardate.gd" id="1_gh4kl"]
+[ext_resource type="Texture2D" uid="uid://cg5tdqxrstk2l" path="res://ui/UI_all.png" id="2_h0ayc"]
+[ext_resource type="FontFile" uid="uid://dmicatk0vl3kj" path="res://assets/fonts/ARCADECLASSIC.TTF" id="3_pljat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3hfd"]
+atlas = ExtResource("2_h0ayc")
+region = Rect2(66, 228, 60, 57)
+
+[node name="Stardate" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gh4kl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 63.0
+offset_bottom = 42.0
+texture = SubResource("AtlasTexture_b3hfd")
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 58.0
+offset_bottom = 38.0
+color = Color(0.777344, 0.71875, 0.558594, 1)
+
+[node name="Hour" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 34.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.258824, 0.196078, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_pljat")
+theme_override_font_sizes/font_size = 10
+text = "08"
+
+[node name="Minutes" type="Label" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 8.0
+offset_right = 54.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.258824, 0.196078, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_pljat")
+theme_override_font_sizes/font_size = 10
+text = "30"
+
+[node name="DayMonthYear" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 26.0
+offset_right = 59.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0.269531, 0.207031, 0.152344, 1)
+theme_override_fonts/font = ExtResource("3_pljat")
+theme_override_font_sizes/font_size = 8
+text = "Day 1, Year 1"
+horizontal_alignment = 1
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 50.0
+offset_right = 55.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.269531, 0.207031, 0.148438, 1)
+theme_override_fonts/font = ExtResource("3_pljat")
+theme_override_font_sizes/font_size = 8
+text = "100 "

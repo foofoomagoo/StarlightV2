@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://bpxssublbiu2f"]
+
+[ext_resource type="Script" path="res://classes/item_data_consumable.gd" id="1_khvfh"]
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="1_rmiho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsgrt"]
+atlas = ExtResource("1_rmiho")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_khvfh")
+heal_value = 2
+energy_value = 0
+ITEM_NAME = "Carrot"
+ITEM_TEXTURE = SubResource("AtlasTexture_bsgrt")
+ITEM_TYPE = ""
+STACKABLE = true
+HOVER_TEXT = "A delicious carrot."
+STATIC = false
+SELL_VALUE = 50

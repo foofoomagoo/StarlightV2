@@ -1,0 +1,302 @@
+[gd_scene load_steps=28 format=3 uid="uid://cp5ihgml61hyt"]
+
+[ext_resource type="PackedScene" uid="uid://ced26kkb18c2h" path="res://entities/player/player.tscn" id="1_or634"]
+[ext_resource type="PackedScene" uid="uid://brlfpwr8gicc4" path="res://ui/ui.tscn" id="1_qqueq"]
+[ext_resource type="Script" path="res://scenes/main/MainCamera.gd" id="1_rcmua"]
+[ext_resource type="Script" path="res://scenes/main/GameWorld.gd" id="2_n6vs3"]
+[ext_resource type="PackedScene" uid="uid://dfm4dr56id0be" path="res://scenes/main/levels/ship.tscn" id="3_2hffu"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="3_dxe1r"]
+[ext_resource type="PackedScene" uid="uid://cdj3bfmyo2clw" path="res://ui/inventory/inventory.tscn" id="3_n4jq7"]
+[ext_resource type="PackedScene" uid="uid://7dwk8c3s0ei8" path="res://ui/inventory/slot.tscn" id="5_821q5"]
+[ext_resource type="Script" path="res://scenes/main/hotbar.gd" id="5_ik7v8"]
+[ext_resource type="Texture2D" uid="uid://cg5tdqxrstk2l" path="res://ui/UI_all.png" id="5_qybty"]
+[ext_resource type="Texture2D" uid="uid://dtmqj2v3bimsh" path="res://ui/inventory.png" id="6_myq1r"]
+[ext_resource type="Script" path="res://scenes/main/InGameMenu.gd" id="6_tru8f"]
+[ext_resource type="PackedScene" uid="uid://uvpyrcky7g6w" path="res://ui/player_stats.tscn" id="10_n4phs"]
+[ext_resource type="PackedScene" uid="uid://dys57p44ksvf" path="res://ui/stardate.tscn" id="11_b7yjn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u5hd"]
+atlas = ExtResource("6_myq1r")
+region = Rect2(304, 364, 292, 132)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynyax"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0c54r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2y3i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tvhsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rq6yu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxv0j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jn2vy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3o5c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eika"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kreug"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_suiy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6iic"]
+atlas = ExtResource("5_qybty")
+region = Rect2(97, 320, 206, 31)
+
+[node name="Main" type="Node2D"]
+
+[node name="MainCamera" type="Camera2D" parent="."]
+script = ExtResource("1_rcmua")
+
+[node name="GameWorld" type="Node2D" parent="."]
+script = ExtResource("2_n6vs3")
+
+[node name="Ship" parent="GameWorld" instance=ExtResource("3_2hffu")]
+
+[node name="Player" parent="GameWorld" instance=ExtResource("1_or634")]
+
+[node name="UI" parent="." instance=ExtResource("1_qqueq")]
+process_mode = 3
+script = ExtResource("3_dxe1r")
+
+[node name="InGameMenu" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_tru8f")
+
+[node name="MenuUI" type="TextureRect" parent="UI/InGameMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -66.0
+offset_right = 146.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_8u5hd")
+
+[node name="MenuNav" type="HBoxContainer" parent="UI/InGameMenu"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 38.0
+offset_right = 314.0
+offset_bottom = 57.0
+theme_override_constants/separation = 5
+
+[node name="InvBtn" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ynyax")
+
+[node name="CraftBtn" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0c54r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t2y3i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tvhsm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rq6yu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gxv0j")
+
+[node name="RelateBtn" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn2vy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3o5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2eika")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kreug")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
+
+[node name="RelateBtn2" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn2vy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3o5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2eika")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kreug")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
+
+[node name="RelateBtn3" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn2vy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3o5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2eika")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kreug")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
+
+[node name="RelateBtn4" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn2vy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3o5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2eika")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kreug")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
+
+[node name="SettingsBtn" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn2vy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3o5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2eika")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kreug")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
+
+[node name="QuitBtn" type="Button" parent="UI/InGameMenu/MenuNav"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn2vy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3o5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2eika")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kreug")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
+
+[node name="Inventory" parent="UI/InGameMenu" instance=ExtResource("3_n4jq7")]
+layout_mode = 1
+
+[node name="Hotbar" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_ik7v8")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Hotbar"]
+layout_mode = 2
+offset_left = 57.0
+offset_top = -33.0
+offset_right = 263.0
+texture = SubResource("AtlasTexture_j6iic")
+stretch_mode = 2
+
+[node name="HighlighContainer" type="HBoxContainer" parent="UI/Hotbar"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -24.0
+offset_right = 258.0
+offset_bottom = -8.0
+theme_override_constants/separation = 6
+
+[node name="ColorRect" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 0)
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.54902, 0.443137, 0.301961, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Hotbar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -24.0
+offset_right = 103.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hotbar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Slot" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot2" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot3" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot4" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot5" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot6" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot7" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot8" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot9" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="PlayerStats" parent="UI" instance=ExtResource("10_n4phs")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = 0.0
+grow_horizontal = 0
+
+[node name="Stardate" parent="UI" instance=ExtResource("11_b7yjn")]

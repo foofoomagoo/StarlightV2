@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=3 uid="uid://cp5ihgml61hyt"]
+
+[ext_resource type="PackedScene" uid="uid://ced26kkb18c2h" path="res://entities/player/player.tscn" id="1_or634"]
+[ext_resource type="PackedScene" uid="uid://brlfpwr8gicc4" path="res://ui/ui.tscn" id="1_qqueq"]
+[ext_resource type="Script" path="res://scenes/main/MainCamera.gd" id="1_rcmua"]
+[ext_resource type="PackedScene" uid="uid://2g7jr0yq2l6w" path="res://scenes/common/pickup.tscn" id="2_jmeft"]
+[ext_resource type="Script" path="res://scenes/main/GameWorld.gd" id="2_n6vs3"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="3_dxe1r"]
+[ext_resource type="PackedScene" uid="uid://cdj3bfmyo2clw" path="res://ui/inventory/inventory.tscn" id="3_n4jq7"]
+[ext_resource type="PackedScene" uid="uid://7dwk8c3s0ei8" path="res://ui/inventory/slot.tscn" id="5_821q5"]
+[ext_resource type="Script" path="res://scenes/main/hotbar.gd" id="5_ik7v8"]
+[ext_resource type="Texture2D" uid="uid://cg5tdqxrstk2l" path="res://ui/UI_all.png" id="5_qybty"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6iic"]
+atlas = ExtResource("5_qybty")
+region = Rect2(97, 320, 206, 31)
+
+[node name="Main" type="Node2D"]
+
+[node name="MainCamera" type="Camera2D" parent="."]
+script = ExtResource("1_rcmua")
+
+[node name="GameWorld" type="Node2D" parent="."]
+script = ExtResource("2_n6vs3")
+
+[node name="Pickup" parent="." instance=ExtResource("2_jmeft")]
+position = Vector2(69, 23)
+
+[node name="Player" parent="." instance=ExtResource("1_or634")]
+
+[node name="UI" parent="." instance=ExtResource("1_qqueq")]
+process_mode = 3
+script = ExtResource("3_dxe1r")
+
+[node name="Inventory" parent="UI" instance=ExtResource("3_n4jq7")]
+visible = false
+
+[node name="Hotbar" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_ik7v8")
+
+[node name="ToolTimer" type="Timer" parent="UI/Hotbar"]
+wait_time = 2.0
+one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/Hotbar"]
+layout_mode = 2
+offset_left = 57.0
+offset_top = -33.0
+offset_right = 263.0
+texture = SubResource("AtlasTexture_j6iic")
+stretch_mode = 2
+
+[node name="HighlighContainer" type="HBoxContainer" parent="UI/Hotbar"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -24.0
+offset_right = 258.0
+offset_bottom = -8.0
+theme_override_constants/separation = 6
+
+[node name="ColorRect" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.329412, 0.266667, 0.180392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Hotbar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -24.0
+offset_right = 103.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hotbar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Slot" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot2" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot3" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot4" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot5" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot6" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot7" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot8" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Slot9" parent="UI/Hotbar/MarginContainer/HBoxContainer" instance=ExtResource("5_821q5")]
+layout_mode = 2
+size_flags_vertical = 0

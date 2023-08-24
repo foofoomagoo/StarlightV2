@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://dq205p4544y3t"]
+
+[ext_resource type="Script" path="res://ui/consumable_choice_box.gd" id="1_gfb8w"]
+[ext_resource type="Texture2D" uid="uid://diwxxma3n5ti4" path="res://ui/inventory_chopped.png" id="2_1fkdi"]
+[ext_resource type="FontFile" uid="uid://dmicatk0vl3kj" path="res://assets/fonts/ARCADECLASSIC.TTF" id="3_5an8u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ju3o4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvfg0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ds64o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fvcp2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tvqm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axn3a"]
+
+[node name="ConsumableChoiceBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gfb8w")
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.5
+offset_top = -62.0
+offset_right = 127.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_1fkdi")
+region_rect = Rect2(288, 115, 32, 58)
+patch_margin_left = 8
+patch_margin_top = 12
+patch_margin_right = 7
+patch_margin_bottom = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 126.0
+offset_right = 281.0
+offset_bottom = 154.0
+theme_override_colors/default_color = Color(0.321569, 0.243137, 0.172549, 1)
+theme_override_fonts/normal_font = ExtResource("3_5an8u")
+theme_override_font_sizes/normal_font_size = 12
+text = "Would you like to eat a carrot? "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 146.0
+offset_right = 277.0
+offset_bottom = 172.0
+
+[node name="YesBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.321569, 0.243137, 0.172549, 1)
+theme_override_fonts/font = ExtResource("3_5an8u")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ju3o4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lvfg0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ds64o")
+text = "Yes"
+flat = true
+alignment = 0
+
+[node name="NoBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.321569, 0.243137, 0.172549, 1)
+theme_override_fonts/font = ExtResource("3_5an8u")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fvcp2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1tvqm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_axn3a")
+text = "No"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="VBoxContainer/YesBtn" to="." method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/NoBtn" to="." method="_on_no_btn_pressed"]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataTool" load_steps=4 format=3 uid="uid://bbmcn1d86w1j0"]
+
+[ext_resource type="Texture2D" uid="uid://bpb64ilpbm70x" path="res://entities/player/wateringcan_red.png" id="1_1y7ce"]
+[ext_resource type="Script" path="res://classes/item_data_tool.gd" id="1_8lp6x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f31b"]
+atlas = ExtResource("1_1y7ce")
+region = Rect2(14, 78, 16, 16)
+
+[resource]
+script = ExtResource("1_8lp6x")
+delay = 1.0
+tool = 3
+ITEM_NAME = "Watering Can"
+ITEM_TEXTURE = SubResource("AtlasTexture_2f31b")
+ITEM_TYPE = "Tool"
+STACKABLE = false
+HOVER_TEXT = "Used for watering flowers."
+STATIC = false
+SELL_VALUE = 0

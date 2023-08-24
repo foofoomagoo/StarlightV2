@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataTool" load_steps=4 format=3 uid="uid://c62ndopd6khb4"]
+
+[ext_resource type="Script" path="res://classes/item_data_tool.gd" id="1_3fwm7"]
+[ext_resource type="Texture2D" uid="uid://cxlkloobxbn28" path="res://entities/player/hoe.png" id="1_chmge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1hui"]
+atlas = ExtResource("1_chmge")
+region = Rect2(15, 76, 16, 16)
+
+[resource]
+script = ExtResource("1_3fwm7")
+delay = 1.0
+tool = 2
+ITEM_NAME = "Hoe"
+ITEM_TEXTURE = SubResource("AtlasTexture_p1hui")
+ITEM_TYPE = "Tool"
+STACKABLE = false
+HOVER_TEXT = "Yo mama."
+STATIC = false
+SELL_VALUE = 0

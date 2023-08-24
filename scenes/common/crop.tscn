@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf7l66m67ifnl"]
+
+[ext_resource type="Script" path="res://scenes/common/crop.gd" id="1_mhvpr"]
+[ext_resource type="Texture2D" uid="uid://d1pmkaec43ilt" path="res://tilesets/tiles.png" id="2_uofgh"]
+[ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="3_2n4l8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owau2"]
+atlas = ExtResource("2_uofgh")
+region = Rect2(128, 144, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_or43p"]
+radius = 7.0
+
+[node name="Crop" type="Node2D"]
+script = ExtResource("1_mhvpr")
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_owau2")
+
+[node name="CropSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 7)
+offset = Vector2(0, -7)
+
+[node name="InteractArea" parent="." instance=ExtResource("3_2n4l8")]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+interact_type = "crop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_or43p")
+
+[connection signal="mouse_entered" from="InteractArea" to="." method="_on_interact_area_mouse_entered"]
+[connection signal="mouse_exited" from="InteractArea" to="." method="_on_interact_area_mouse_exited"]
