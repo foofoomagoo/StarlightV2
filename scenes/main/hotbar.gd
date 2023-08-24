@@ -39,7 +39,7 @@ func _unhandled_key_input(event):
 	if not visible or not event.is_pressed():
 		return
 	
-	if range(KEY_1, KEY_9).has(event.keycode):
+	if range(KEY_1, KEY_9).has(event.keycode) and !Globals.disable_controls:
 		_highlight(event.keycode - KEY_1)
 	elif event.keycode == 57:
 		_highlight(8)
