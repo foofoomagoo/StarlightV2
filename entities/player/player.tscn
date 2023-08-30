@@ -259,7 +259,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_ytims"]
@@ -771,7 +771,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 5)]
+"values": [Vector2(0, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_aqcjv"]
@@ -811,7 +811,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 5)]
+"values": [Vector2(0, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_mimni"]
@@ -851,7 +851,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 5)]
+"values": [Vector2(0, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_ic8xl"]
@@ -891,7 +891,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 5)]
+"values": [Vector2(0, -3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwjdx"]
@@ -937,6 +937,7 @@ collision_mask = 8
 script = ExtResource("1_1nraa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
 texture = ExtResource("2_bu87y")
 hframes = 8
 vframes = 49
@@ -965,17 +966,22 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 12.5)
+position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_xai3a")
 
 [node name="InteractArea" parent="." instance=ExtResource("3_a2hvd")]
-visible = false
+position = Vector2(0, -8)
 collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_2jlgt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 20)
+collision_mask = 16
+collide_with_areas = true
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]

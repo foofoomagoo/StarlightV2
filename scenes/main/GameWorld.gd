@@ -16,6 +16,7 @@ func remove_scene() -> void:
 		remove_child(child)
 
 func on_scene_change(scene: String):
+	WorldManager.get_persist_data()
 	remove_scene()
 	
 	#	Load the next scene

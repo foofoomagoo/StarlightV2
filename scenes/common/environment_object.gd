@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 @export var environment_data: EnvironmentData
-#@export var shake_loot_data: ItemData
 
 @onready var loot_container = preload("res://scenes/common/pickup.tscn")
 @onready var animation = $AnimationPlayer
@@ -88,3 +87,16 @@ func _on_interact_area_mouse_entered():
 
 func _on_interact_area_mouse_exited():
 	mouse_in = false
+
+
+func save():
+	var save_dictionary: Dictionary = {
+		"type" : "Environment Object",
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"health" : health,
+		"interacted_with" : interacted_with
+	}
+	return save_dictionary

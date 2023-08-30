@@ -44,7 +44,6 @@ func load_empty_crop():
 
 
 func load_crop_info():
-	print(grow_state)
 	days_to_grow = crop.time_to_grow
 	sprite.texture  = crop.crop_texture
 	sprite.hframes = crop.phases
@@ -82,11 +81,32 @@ func plant_crop():
 	CropManager.add_crop(crop_info)
 
 
+func tool_interact(tool: int):
+	match tool:
+		0 : _destroy()
+		1 : _destroy()
+		2 : pass
+		3: get_watered()
+
+
 func get_watered():
-	if InventoryManager.selected_hotbar_data.item_data.tool == 3:
-		ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
-		watered == true
-		CropManager.water_crop(crop)
+#	if InventoryManager.selected_hotbar_data.item_data.tool == 3:
+	ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
+	watered == true
+	CropManager.water_crop(crop)
+
+
+func _destroy():
+	if crop != null:
+		crop = null
+		sprite.texture = null
+		grow_state = 0
+		sprite.set_frame(0)
+	
+		CropManager.clear_crop(crop, watered)
+	else:
+		CropManager.remove_crop(crop)
+		queue_free()
 
 
 func _on_interact_area_mouse_entered():
@@ -97,8 +117,18 @@ func _on_interact_area_mouse_exited():
 	crop_selected = false
 
 
-#func _on_interact_area_input_event(viewport, event, shape_idx):
-#	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 2:
-#		match InventoryManager.selected_hotbar_data.item_data.ITEM_TYPE:
-#			"Tool" : print("Okay, but what tool?")
-#			"Seed" : set_crop(InventoryManager.selected_hotbar_data.item_data.crop_data)
+func _on_interact():
+	if grow_state == (crop.phases - 1) and !harvested:
+		var slot_data = SlotData.new()
+		slot_data.item_data = crop.harvest
+		slot_data.quantity = crop.harvest_quantity
+		InventoryManager.inv.add_pickup(slot_data)
+		if !crop.regrowable:
+			_destroy()
+			harvested = true
+		else:
+			harvested = false
+			sprite.set_frame(0)
+		print("You havest some " + crop.harvest.ITEM_NAME)
+	else:
+		print("You can't harvest it yet.")
