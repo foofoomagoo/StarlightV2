@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://xc3053anrjx8"]
+
+[ext_resource type="Script" path="res://classes/item_data_consumable.gd" id="1_66rod"]
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="1_nkg8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti1wi"]
+atlas = ExtResource("1_nkg8r")
+region = Rect2(15, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_66rod")
+heal_value = 2
+energy_value = 2
+ITEM_NAME = "Tomato"
+ITEM_TEXTURE = SubResource("AtlasTexture_ti1wi")
+ITEM_TYPE = ""
+STACKABLE = true
+HOVER_TEXT = "Eww, tomatoes are gross."
+STATIC = false
+SELL_VALUE = 5

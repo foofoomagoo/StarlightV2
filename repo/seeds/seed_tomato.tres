@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://cpe2njjr8c2go"]
+
+[ext_resource type="Script" path="res://classes/item_data_seed.gd" id="1_l2lse"]
+[ext_resource type="Texture2D" uid="uid://bfbx22cbd3v6" path="res://assets/seeds.png" id="1_q7qq8"]
+[ext_resource type="Resource" uid="uid://c38yena83jhye" path="res://repo/crops/crop_tomato.tres" id="2_dlgwk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg6af"]
+atlas = ExtResource("1_q7qq8")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_l2lse")
+crop_data = ExtResource("2_dlgwk")
+ITEM_NAME = "Tomato Seed"
+ITEM_TEXTURE = SubResource("AtlasTexture_rg6af")
+ITEM_TYPE = "Seed"
+STACKABLE = true
+HOVER_TEXT = "A seed to grow a tomato."
+STATIC = false
+SELL_VALUE = 5

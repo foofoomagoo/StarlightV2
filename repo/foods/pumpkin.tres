@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://bsyutci6pwici"]
+
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="1_nklyl"]
+[ext_resource type="Script" path="res://classes/item_data_consumable.gd" id="1_qv1w6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnvm2"]
+atlas = ExtResource("1_nklyl")
+region = Rect2(47, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_qv1w6")
+heal_value = 10
+energy_value = 5
+ITEM_NAME = "Pumpkin"
+ITEM_TEXTURE = SubResource("AtlasTexture_gnvm2")
+ITEM_TYPE = "Consumable"
+STACKABLE = true
+HOVER_TEXT = "A huge pumpkin!"
+STATIC = false
+SELL_VALUE = 10

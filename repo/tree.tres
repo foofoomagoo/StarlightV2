@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnvironmentData" load_steps=4 format=3 uid="uid://brthsvjfc8cc4"]
 
 [ext_resource type="Script" path="res://classes/environment_data.gd" id="1_08d76"]
-[ext_resource type="Resource" uid="uid://bpxssublbiu2f" path="res://repo/carrot.tres" id="1_q4ec4"]
+[ext_resource type="Resource" uid="uid://bpxssublbiu2f" path="res://repo/foods/carrot.tres" id="1_q4ec4"]
 [ext_resource type="Resource" uid="uid://d1ibn3nwxn8o0" path="res://repo/wood.tres" id="1_y8doc"]
 
 [resource]

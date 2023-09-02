@@ -65,19 +65,19 @@ func get_direction(tool: String, mouse: Vector2):
 			0 : 
 				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.RIGHT)
 				animation.set("parameters/Idle/blend_position", Vector2.RIGHT)
-				raycast.target_position = Vector2(20, 0)
+				raycast.target_position = Vector2(16, 0)
 			1 : 
 				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.DOWN)
 				animation.set("parameters/Idle/blend_position", Vector2.DOWN)
-				raycast.target_position = Vector2(0, 20)
+				raycast.target_position = Vector2(0, 16)
 			2 : 
 				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.LEFT)
 				animation.set("parameters/Idle/blend_position", Vector2.LEFT)
-				raycast.target_position = Vector2(-20, 0)
+				raycast.target_position = Vector2(-16, 0)
 			3 : 
 				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.UP)
 				animation.set("parameters/Idle/blend_position", Vector2.UP)
-				raycast.target_position = Vector2(0, -20)
+				raycast.target_position = Vector2(0, -16)
 
 func swing_tool(tool: int):
 	var mouse_pos = get_global_mouse_position()
@@ -113,14 +113,15 @@ func stop_tool(tool: int):
 
 
 func use_hoe():
+	WorldManager.current_tilemap.highlight = true
 	var tile = animation.get("parameters/Idle/blend_position")
 	if WorldManager.current_tilemap and WorldManager.current_tilemap.check_if_farmable(position, tile):
 		if !raycast.is_colliding():
 			var crop_pos = WorldManager.current_tilemap.get_mouse_pos_on_map(position, tile)
-	#		var mouse_pos = WorldManager.current_tilemap.get_mouse_pos_on_map()
 			var item_instance = crop.instantiate()
 			item_instance.position = crop_pos
 			get_parent().add_child(item_instance)
+			WorldManager.current_tilemap.till(crop_pos)
 
 func _seed(data: DataCrop):
 	if raycast.is_colliding():
@@ -141,8 +142,16 @@ func _on_animation_tree_animation_finished(anim_name):
 		0 : use_tool(current_tool)
 		1 : use_tool(current_tool)
 		2 : use_hoe()
-		3 : use_tool(current_tool)
+		3 : use_watering_can()
+			#use_tool(current_tool)
 	Globals.can_move = true
+
+
+func use_watering_can():
+	var tile = animation.get("parameters/Idle/blend_position")
+	if tilemap.check_if_farmable(position, tile):
+		var crop_pos = WorldManager.current_tilemap.get_mouse_pos_on_map(position, tile)
+		tilemap.add_watered_tile(crop_pos)
 
 
 func get_movement_vector():

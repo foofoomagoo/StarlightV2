@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DataCrop" load_steps=5 format=3 uid="uid://c38yena83jhye"]
+
+[ext_resource type="Texture2D" uid="uid://xuf6v363b3ts" path="res://assets/crops.png" id="1_8irgv"]
+[ext_resource type="Script" path="res://classes/crop_data.gd" id="1_rv1k1"]
+[ext_resource type="Resource" uid="uid://xc3053anrjx8" path="res://repo/foods/tomato.tres" id="2_h0aw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tx3b"]
+atlas = ExtResource("1_8irgv")
+region = Rect2(0, 16, 96, 16)
+
+[resource]
+script = ExtResource("1_rv1k1")
+crop_texture = SubResource("AtlasTexture_4tx3b")
+time_to_grow = 1
+harvest = ExtResource("2_h0aw6")
+harvest_quantity = 1
+regrowable = false
+phases = 6

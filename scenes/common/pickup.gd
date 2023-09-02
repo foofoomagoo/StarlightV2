@@ -8,9 +8,9 @@ extends Node2D
 @onready var animation = $AnimationPlayer
 
 func _ready():
-	var rand = randi_range(0, 1)
-	if rand < 1:
-		path.scale.x = -1
+#	var rand = randi_range(0, 1)
+#	if rand < 1:
+#		path.scale.x = -1
 	animation.play("drop")
 	if slot_data:
 		sprite_2d.texture = slot_data.item_data.ITEM_TEXTURE

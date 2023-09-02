@@ -3,7 +3,7 @@ class_name ItemData
 
 @export var ITEM_NAME: String
 @export var ITEM_TEXTURE: AtlasTexture
-@export_enum ("Tool", "Seed", "Resource", "Gem", "Artifact") var ITEM_TYPE: String
+@export_enum ("Tool", "Seed", "Resource", "Gem", "Artifact", "Consumable") var ITEM_TYPE: String
 @export var STACKABLE: bool
 @export_multiline var HOVER_TEXT: String
 @export var STATIC: bool

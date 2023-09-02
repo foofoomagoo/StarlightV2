@@ -3,20 +3,31 @@ extends Control
 signal drop_slot_data(slot_data: SlotData)
 
 @onready var item_grid : GridContainer = $MarginContainer/InventoryBG/GridContainer
+@onready var external_item_grid: GridContainer = $ExternalInventory/GridContainer
 @onready var grabbed_slot: Panel = $GrabbedSlot
 @onready var equip_slots: GridContainer = $EquipSlots
+@onready var external_slots: Control = $ExternalInventory
 @onready var Slot = preload("res://ui/inventory/slot.tscn")
 
 var grabbed_slot_data: SlotData 
+var external_data: InventoryData
 
 func _ready():
 	set_inventory_data(InventoryManager.inv, InventoryManager.equip_inv)
+	InventoryManager.external_inventory_opened.connect(set_external_data)
 
 
 func _physics_process(delta) -> void:
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5, 5)
 
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel") and !Globals.disable_controls:
+		if $ExternalInventory.visible:
+			external_data.inventory_interact.disconnect(on_inventory_interact)
+			external_data.inventory_updated.disconnect(populate_external)
+		external_slots.visible = false
 
 func set_inventory_data(inventory_data: InventoryData, equip_data: InventoryData):
 	inventory_data.inventory_updated.connect(populate_item_grid)
@@ -87,13 +98,34 @@ func _on_trash_gui_input(event):
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
 					drop_slot_data.emit(grabbed_slot_data)
-					# Add this in once you've got your tool code
-#					if not grabbed_slot_data.item_data is ItemDataTool:
-#						grabbed_slot_data = null
-					grabbed_slot_data = null
+					if not grabbed_slot_data.item_data is ItemDataTool:
+						grabbed_slot_data = null
 				MOUSE_BUTTON_RIGHT:
 					drop_slot_data.emit(grabbed_slot_data.create_single_slot_data())
 					if grabbed_slot_data.quantity < 1:
 						grabbed_slot_data = null
 			
 			updated_grabbed_slot()
+
+
+func set_external_data(data: InventoryData):
+	external_data = data
+	data.inventory_updated.connect(populate_external)
+	data.inventory_interact.connect(on_inventory_interact)
+	external_slots.visible = !external_slots.visible
+	
+	populate_external(data)
+	
+
+func populate_external(data: InventoryData):
+	for child in external_item_grid.get_children():
+		child.queue_free()
+		
+	for slot_data in data.slot_datas:
+		var slot = Slot.instantiate()
+		external_item_grid.add_child(slot)
+		
+		slot.slot_clicked.connect(data.on_slot_clicked)
+	
+		if slot_data:
+			slot.set_slot_data(slot_data)

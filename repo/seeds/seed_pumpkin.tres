@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://b0jrbcpswign5"]
+
+[ext_resource type="Resource" uid="uid://cr2d30n2aborv" path="res://repo/crops/crop_pumpkin.tres" id="1_6igu7"]
+[ext_resource type="Texture2D" uid="uid://bfbx22cbd3v6" path="res://assets/seeds.png" id="1_auh4g"]
+[ext_resource type="Script" path="res://classes/item_data_seed.gd" id="1_c4d2a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bddf"]
+atlas = ExtResource("1_auh4g")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_c4d2a")
+crop_data = ExtResource("1_6igu7")
+ITEM_NAME = "Pumpkin Seed"
+ITEM_TEXTURE = SubResource("AtlasTexture_7bddf")
+ITEM_TYPE = "Seed"
+STACKABLE = true
+HOVER_TEXT = "A seed to grow a pumpkin."
+STATIC = false
+SELL_VALUE = 2

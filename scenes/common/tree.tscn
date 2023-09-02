@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://br0a0ehkagcb7"]
 
 [ext_resource type="Script" path="res://scenes/common/environment_object.gd" id="1_6b7nm"]
-[ext_resource type="Texture2D" uid="uid://dae4ci681g3tb" path="res://assets/global.png" id="1_ag25a"]
 [ext_resource type="Resource" uid="uid://brthsvjfc8cc4" path="res://repo/tree.tres" id="2_wrpxq"]
+[ext_resource type="Texture2D" uid="uid://bei4kijv3ds0x" path="res://assets/global_shadow.png" id="3_umirc"]
 [ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="4_equab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b2qp"]
@@ -79,19 +79,20 @@ radius = 16.1245
 
 [node name="Tree" type="StaticBody2D" groups=["Persist"]]
 z_index = 1
+position = Vector2(0, -19)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_6b7nm")
 environment_data = ExtResource("2_wrpxq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ag25a")
-offset = Vector2(0, -15)
+texture = ExtResource("3_umirc")
+offset = Vector2(0, 7)
 region_enabled = true
-region_rect = Rect2(1, 2, 30, 30)
+region_rect = Rect2(33, 48, 31, 41)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -3)
+position = Vector2(1, 16)
 shape = SubResource("RectangleShape2D_3b2qp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -100,7 +101,7 @@ libraries = {
 }
 
 [node name="InteractArea" parent="." instance=ExtResource("4_equab")]
-position = Vector2(0, -12)
+position = Vector2(0, 3)
 collision_layer = 16
 collision_mask = 2
 interact_type = "environment"

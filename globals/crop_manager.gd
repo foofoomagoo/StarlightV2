@@ -3,38 +3,46 @@ extends Node
 @onready var crops = []
 
 var can_show_seed_grid: bool = false
+var counter: int = 0
 
 
 func on_day_tick():
-	print("Day tick")
 	var current_day = TimeManager.day
 	var non_empty = crops.filter(empty_crops)
 	
 	for i in non_empty:
-		if (current_day - i["day_planted"] == i["days_to_grow"]) and i["watered"] and i["crop"] != null:
-			i["grow_state"] += 1
-			i["day_planted"] = current_day
-#			i["watered"] = false
-
+		if (current_day - i["data"].day_planted == i["data"].days_to_grow) and i["data"].watered and i["data"].crop != null:
+			i["data"].grow_state += 1
+			i["data"].day_planted = current_day
+#
 	for i in crops:
-		i["watered"] = false
+		i["data"].watered = false
 
 func empty_crops(data):
-	return data["crop"] != null
+	return data["data"].crop != null
 
 
-func add_empty_crop(data) -> void:
+func add_empty_crop(data):
+	data["crop_number"] = counter
+	counter += 1
 	crops.append(data)
 
 
-func add_crop(data: Dictionary):
-	var crop_index = crops.find(data)
-	crops[crop_index] = data
+func add_crop(data):
+	for i in crops:
+		if i["crop_number"] == data.crop_number:
+			i["data"] == data
+#	var crop_index = crops.find(data["data"])
+#	crops[crop_index] = data
+#	print(crops[crop_index])
+#	print(crop_index)
 
 
 func water_crop(data):
-	var crop_index = crops.find(data)
-	crops[crop_index]["watered"] = true
+	for i in crops:
+		if i["crop_number"] == data.crop_number:
+			i["data"].watered = true
+#	crops[crop_index]["data"]["watered"] = true
 
 
 func remove_crop(data):

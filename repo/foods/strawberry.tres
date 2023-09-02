@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://c1cc420kpmv44"]
+
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="1_foggp"]
+[ext_resource type="Script" path="res://classes/item_data_consumable.gd" id="1_jq1u3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwiff"]
+atlas = ExtResource("1_foggp")
+region = Rect2(31, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_jq1u3")
+heal_value = 3
+energy_value = 1
+ITEM_NAME = "Strawberry"
+ITEM_TEXTURE = SubResource("AtlasTexture_jwiff")
+ITEM_TYPE = "Consumable"
+STACKABLE = true
+HOVER_TEXT = "A juicy strawberry."
+STATIC = false
+SELL_VALUE = 3

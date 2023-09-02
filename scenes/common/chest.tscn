@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://qfmj4278y0do"]
+
+[ext_resource type="Script" path="res://scenes/common/chest.gd" id="1_jvk3j"]
+[ext_resource type="Texture2D" uid="uid://d1pmkaec43ilt" path="res://tilesets/tiles.png" id="1_op7pb"]
+[ext_resource type="Resource" uid="uid://cbtikgfymfvax" path="res://repo/chest_inventory.tres" id="2_eexfg"]
+[ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="4_xkflo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf4m4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_icgk4"]
+
+[node name="Chest" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_jvk3j")
+inventory = ExtResource("2_eexfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qf4m4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_op7pb")
+region_enabled = true
+region_rect = Rect2(128, 784, 16, 16)
+
+[node name="InteractArea" parent="." instance=ExtResource("4_xkflo")]
+collision_layer = 16
+collision_mask = 0
+interact_type = "chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_icgk4")

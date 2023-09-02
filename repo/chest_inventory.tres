@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=13 format=3 uid="uid://cbtikgfymfvax"]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory_data.gd" id="1_3qykp"]
+[ext_resource type="Resource" uid="uid://bycqpw5ow4g0p" path="res://repo/seeds/seed_carrot.tres" id="2_ifsua"]
+[ext_resource type="Script" path="res://ui/inventory/slot_data.gd" id="3_11ryc"]
+[ext_resource type="Resource" uid="uid://ce532ebmt2chc" path="res://repo/seeds/seed_strawberry.tres" id="4_1grdt"]
+[ext_resource type="Resource" uid="uid://cpe2njjr8c2go" path="res://repo/seeds/seed_tomato.tres" id="5_3srev"]
+[ext_resource type="Resource" uid="uid://cwq5tpm36b5f0" path="res://repo/seeds/seed_corn.tres" id="6_vdjsi"]
+[ext_resource type="Resource" uid="uid://b0jrbcpswign5" path="res://repo/seeds/seed_pumpkin.tres" id="7_yj3u3"]
+
+[sub_resource type="Resource" id="Resource_buf3g"]
+script = ExtResource("3_11ryc")
+item_data = ExtResource("2_ifsua")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_qpixb"]
+script = ExtResource("3_11ryc")
+item_data = ExtResource("4_1grdt")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_jo1n0"]
+script = ExtResource("3_11ryc")
+item_data = ExtResource("5_3srev")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_xxfh3"]
+script = ExtResource("3_11ryc")
+item_data = ExtResource("6_vdjsi")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_kyc4k"]
+script = ExtResource("3_11ryc")
+item_data = ExtResource("7_yj3u3")
+quantity = 5
+
+[resource]
+script = ExtResource("1_3qykp")
+slot_datas = Array[ExtResource("3_11ryc")]([SubResource("Resource_buf3g"), SubResource("Resource_qpixb"), SubResource("Resource_jo1n0"), SubResource("Resource_xxfh3"), SubResource("Resource_kyc4k"), null, null, null, null])

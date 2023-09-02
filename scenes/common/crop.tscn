@@ -1,12 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf7l66m67ifnl"]
+[gd_scene load_steps=5 format=3 uid="uid://cf7l66m67ifnl"]
 
 [ext_resource type="Script" path="res://scenes/common/crop.gd" id="1_mhvpr"]
-[ext_resource type="Texture2D" uid="uid://d1pmkaec43ilt" path="res://tilesets/tiles.png" id="2_uofgh"]
+[ext_resource type="Texture2D" uid="uid://blwbx4nolmlvd" path="res://tilesets/farming-tiles.png" id="2_whxok"]
 [ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="3_2n4l8"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_owau2"]
-atlas = ExtResource("2_uofgh")
-region = Rect2(128, 144, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06dov"]
 size = Vector2(16, 16)
@@ -15,11 +11,12 @@ size = Vector2(16, 16)
 script = ExtResource("1_mhvpr")
 
 [node name="Ground" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_owau2")
+visible = false
+texture = ExtResource("2_whxok")
+region_enabled = true
+region_rect = Rect2(112, 48, 16, 16)
 
 [node name="CropSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 7)
-offset = Vector2(0, -7)
 
 [node name="InteractArea" parent="." instance=ExtResource("3_2n4l8")]
 collision_layer = 16

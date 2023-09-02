@@ -10,6 +10,11 @@ extends CanvasLayer
 
 func _ready():
 	PlayerManager.use_consumable.connect(on_eat_consumable)
+	InventoryManager.external_inventory_opened.connect(on_external_open)
+
+
+func on_external_open(data: InventoryData):
+	toggle_ui()
 
 
 func on_eat_consumable(data: ItemDataConsumable):
@@ -20,12 +25,15 @@ func on_eat_consumable(data: ItemDataConsumable):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel") and !Globals.disable_controls:
-		inventory_ui.visible = !inventory_ui.visible
-		hotbar_ui.visible = !hotbar_ui.visible
-		player_stats.visible = !player_stats.visible
-		
-		if !inventory_ui.visible:
-			get_tree().paused = false
-		else:
-			get_tree().paused = true
+		toggle_ui()
 
+
+func toggle_ui():
+	inventory_ui.visible = !inventory_ui.visible
+	hotbar_ui.visible = !hotbar_ui.visible
+	player_stats.visible = !player_stats.visible
+	
+	if !inventory_ui.visible:
+		get_tree().paused = false
+	else:
+		get_tree().paused = true

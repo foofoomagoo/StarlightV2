@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DataCrop" load_steps=5 format=3 uid="uid://cr2d30n2aborv"]
+
+[ext_resource type="Texture2D" uid="uid://xuf6v363b3ts" path="res://assets/crops.png" id="1_ieymm"]
+[ext_resource type="Script" path="res://classes/crop_data.gd" id="1_ttny8"]
+[ext_resource type="Resource" uid="uid://bsyutci6pwici" path="res://repo/foods/pumpkin.tres" id="2_ykj1u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdldq"]
+atlas = ExtResource("1_ieymm")
+region = Rect2(0, 49, 96, 16)
+
+[resource]
+script = ExtResource("1_ttny8")
+crop_texture = SubResource("AtlasTexture_mdldq")
+time_to_grow = 2
+harvest = ExtResource("2_ykj1u")
+harvest_quantity = 1
+regrowable = false
+phases = 6

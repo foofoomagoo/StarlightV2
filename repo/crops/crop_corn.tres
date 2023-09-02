@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DataCrop" load_steps=5 format=3 uid="uid://dfdcdc6ys408a"]
+
+[ext_resource type="Script" path="res://classes/crop_data.gd" id="1_jqomx"]
+[ext_resource type="Texture2D" uid="uid://xuf6v363b3ts" path="res://assets/crops.png" id="1_mi6j4"]
+[ext_resource type="Resource" uid="uid://v1u0hxacoki7" path="res://repo/foods/corn.tres" id="2_ky4k1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biwnu"]
+atlas = ExtResource("1_mi6j4")
+region = Rect2(0, 64, 96, 16)
+
+[resource]
+script = ExtResource("1_jqomx")
+crop_texture = SubResource("AtlasTexture_biwnu")
+time_to_grow = 1
+harvest = ExtResource("2_ky4k1")
+harvest_quantity = 2
+regrowable = false
+phases = 6

@@ -1,14 +1,7 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=5 format=3 uid="uid://c4v1dtqtx1def"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=2 format=3 uid="uid://c4v1dtqtx1def"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_data.gd" id="1_1n7vq"]
-[ext_resource type="Resource" uid="uid://dvrrh7lwhvf07" path="res://repo/tools/axe.tres" id="2_6s4a2"]
-[ext_resource type="Script" path="res://ui/inventory/slot_data.gd" id="3_frxmh"]
-
-[sub_resource type="Resource" id="Resource_lmev2"]
-script = ExtResource("3_frxmh")
-item_data = ExtResource("2_6s4a2")
-quantity = 1
 
 [resource]
 script = ExtResource("1_1n7vq")
-slot_datas = Array[ExtResource("3_frxmh")]([SubResource("Resource_lmev2"), null, null, null, null, null])
+slot_datas = Array[Resource("res://ui/inventory/slot_data.gd")]([null, null, null, null, null, null])

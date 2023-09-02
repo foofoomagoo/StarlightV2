@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DataCrop" load_steps=5 format=3 uid="uid://bwg2qvl8v3fbt"]
+
+[ext_resource type="Script" path="res://classes/crop_data.gd" id="1_bu4ry"]
+[ext_resource type="Texture2D" uid="uid://xuf6v363b3ts" path="res://assets/crops.png" id="1_vlg5r"]
+[ext_resource type="Resource" uid="uid://c1cc420kpmv44" path="res://repo/foods/strawberry.tres" id="2_igyt7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl33h"]
+atlas = ExtResource("1_vlg5r")
+region = Rect2(0, 33, 96, 16)
+
+[resource]
+script = ExtResource("1_bu4ry")
+crop_texture = SubResource("AtlasTexture_nl33h")
+time_to_grow = 1
+harvest = ExtResource("2_igyt7")
+harvest_quantity = 3
+regrowable = false
+phases = 6

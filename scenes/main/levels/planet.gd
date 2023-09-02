@@ -30,18 +30,28 @@ func _ready():
 				i["init"] = false
 			else:
 				load_resources()
+				load_tiles()
 	load_crops()
 
+
+func load_tiles():
+	var tiles = WorldManager.worlds[1]["tiles"]
+	
+	for i in tiles:
+		tilemap.set_cell(1, i, 3, Vector2i(0,0))
+	var dirt = tilemap.get_used_cells(1)
+	tilemap.set_cells_terrain_connect(1, dirt, 0, 1)
 
 func load_crops():
 	for i in CropManager.crops:
 		var crop = crop_scene.instantiate()
-		crop.crop = i["crop"]
+		crop.crop_number = i["crop_number"]
+		crop.crop = i["data"]["crop"]
 		crop.position = Vector2(i["pos_x"], i["pos_y"])
-		crop.grow_state = i["grow_state"]
-		crop.day_planted = i["day_planted"]
-		crop.watered = i["watered"]
-		crop.new = i["new"]
+		crop.grow_state = i["data"]["grow_state"]
+		crop.day_planted = i["data"]["day_planted"]
+		crop.watered = i["data"]["watered"]
+		crop.new = i["data"]["new"]
 		get_node("YSort").add_child(crop)
 
 
@@ -67,7 +77,7 @@ func create_resources():
 
 		if temp < .2:
 			create_environment_objects(x, true)
-			tilemap.set_cell(0, Vector2i(x.x, x.y), 0, Vector2i(15, 1))
+#			tilemap.set_cell(0, Vector2i(x.x, x.y), 0, Vector2i(15, 1))
 		else:
 #			create_tree(x, 5)
 			create_environment_objects(x, false)

@@ -6,6 +6,7 @@ extends Node2D
 @onready var ground = $Ground
 
 var crop: DataCrop
+var crop_number: int
 var new: bool = true
 var harvested: bool = false
 var watered: bool = false
@@ -13,9 +14,11 @@ var day_planted = null
 var days_to_grow
 var grow_state = 0
 var crop_selected: bool
+var key
 
 
 func _ready():
+	print(self)
 	if new:
 		new = false
 		set_empty_crop()
@@ -29,13 +32,21 @@ func set_empty_crop():
 	var crop_info: Dictionary = {
 		"pos_x" : position.x,
 		"pos_y" : position.y,
-		"crop" : null,
-		"grow_state" : null,
-		"day_planted" : null,
-		"watered" : watered,
-		"new" : new
+		"crop_number" : null,
+		"data" : self
 	}
 	
+#	var crop_info: Dictionary = {
+#		"pos_x" : position.x,
+#		"pos_y" : position.y,
+#		"node" : self,
+#		"crop" : null,
+#		"grow_state" : null,
+#		"day_planted" : null,
+#		"watered" : watered,
+#		"new" : new
+#	}
+
 	CropManager.add_empty_crop(crop_info)
 
 func load_empty_crop():
@@ -65,20 +76,8 @@ func plant_crop():
 	sprite.set_frame(grow_state)
 	grow_state = 0
 	sprite.hframes = crop.phases
-	
-	var crop_info: Dictionary = {
-		"pos_x" : position.x,
-		"pos_y" : position.y,
-		"grow_state" : grow_state,
-		"day_planted" : day_planted,
-		"crop" : crop,
-		"harvested" : harvested,
-		"days_to_grow" : days_to_grow,
-		"watered" : watered,
-		"new" : new
-	}
-	
-	CropManager.add_crop(crop_info)
+
+	CropManager.add_crop(self)
 
 
 func tool_interact(tool: int):
@@ -91,9 +90,11 @@ func tool_interact(tool: int):
 
 func get_watered():
 #	if InventoryManager.selected_hotbar_data.item_data.tool == 3:
-	ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
-	watered == true
-	CropManager.water_crop(crop)
+#	ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
+#	ground.visible = true
+#	ground.modulate = Color(1, 1, 1, .5)
+	watered = true
+	CropManager.water_crop(self)
 
 
 func _destroy():
@@ -128,7 +129,6 @@ func _on_interact():
 			harvested = true
 		else:
 			harvested = false
-			sprite.set_frame(0)
-		print("You havest some " + crop.harvest.ITEM_NAME)
+			sprite.set_frame(crop.phases - 2)
 	else:
 		print("You can't harvest it yet.")

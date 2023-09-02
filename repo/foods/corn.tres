@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://v1u0hxacoki7"]
+
+[ext_resource type="Script" path="res://classes/item_data_consumable.gd" id="1_5jifb"]
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="1_vdidv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gda38"]
+atlas = ExtResource("1_vdidv")
+region = Rect2(63, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_5jifb")
+heal_value = 3
+energy_value = 3
+ITEM_NAME = "Corn"
+ITEM_TEXTURE = SubResource("AtlasTexture_gda38")
+ITEM_TYPE = "Consumable"
+STACKABLE = true
+HOVER_TEXT = "An ear of corn. Hello?"
+STATIC = false
+SELL_VALUE = 100

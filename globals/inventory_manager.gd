@@ -1,6 +1,7 @@
 extends Node
 
 signal item_picked_up(index: int)
+signal external_inventory_opened(inventory_data: InventoryData)
 
 @onready var inventory_interface = preload("res://ui/inventory/inventory.tscn")
 #@onready var hotbar_interface = preload("res://scenes/inventory/hotbar.tscn")

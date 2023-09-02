@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://ce532ebmt2chc"]
+
+[ext_resource type="Texture2D" uid="uid://bfbx22cbd3v6" path="res://assets/seeds.png" id="1_73jd0"]
+[ext_resource type="Script" path="res://classes/item_data_seed.gd" id="1_vxe2j"]
+[ext_resource type="Resource" uid="uid://bwg2qvl8v3fbt" path="res://repo/crops/crop_strawberry.tres" id="2_qd8o5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_813wl"]
+atlas = ExtResource("1_73jd0")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_vxe2j")
+crop_data = ExtResource("2_qd8o5")
+ITEM_NAME = "Strawberry Seed"
+ITEM_TEXTURE = SubResource("AtlasTexture_813wl")
+ITEM_TYPE = "Seed"
+STACKABLE = true
+HOVER_TEXT = "Plant your very own strawberry!"
+STATIC = false
+SELL_VALUE = 10

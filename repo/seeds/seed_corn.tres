@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://cwq5tpm36b5f0"]
+
+[ext_resource type="Script" path="res://classes/item_data_seed.gd" id="1_2epc5"]
+[ext_resource type="Texture2D" uid="uid://bfbx22cbd3v6" path="res://assets/seeds.png" id="1_7o5nx"]
+[ext_resource type="Resource" uid="uid://dfdcdc6ys408a" path="res://repo/crops/crop_corn.tres" id="1_w6bq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0ham"]
+atlas = ExtResource("1_7o5nx")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_2epc5")
+crop_data = ExtResource("1_w6bq6")
+ITEM_NAME = "Corn Seed"
+ITEM_TEXTURE = SubResource("AtlasTexture_u0ham")
+ITEM_TYPE = "Seed"
+STACKABLE = true
+HOVER_TEXT = "A seed to grow an ear of corn."
+STATIC = false
+SELL_VALUE = 5

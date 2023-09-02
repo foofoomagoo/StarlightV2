@@ -21,6 +21,9 @@ func _ready():
 	loot_quantity = environment_data.LOOT_QUANTITY
 	required_tool_type = environment_data.TOOL_TYPE
 	shake_loot_data = environment_data.INTERACT_LOOT
+	
+	if environment_data.TYPE == 0:
+		random_tree()
 
 func _on_interact():
 	if !interacted_with and shake_loot_data != null:
@@ -63,7 +66,6 @@ func drop_loot():
 
 		var loot_pos = Vector2(position.x + rand_dir_x, position.y + rand_dir_y)
 		loot_instance.position = loot_pos
-#		get_tree().get_root().call_deferred("add_child", loot_instance)
 		get_parent().call_deferred("add_child", loot_instance)
 	print("Object dropped " + str(loot_quantity) + " pieces of " + loot.ITEM_NAME)
 #
@@ -79,6 +81,15 @@ func _on_animation_player_animation_finished(anim_name):
 		drop_loot()
 		return
 	shake_anim_finished = true
+
+
+func random_tree():
+	var rand = randi_range(0, 2)
+	
+	match rand:
+		0 : sprite.region_rect = Rect2(1, 2, 30, 37)
+		1 : sprite.region_rect = Rect2(34, 0, 30, 40)
+		2 : sprite.region_rect = Rect2(33, 48, 31, 41)
 
 
 func _on_interact_area_mouse_entered():

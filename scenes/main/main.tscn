@@ -166,28 +166,43 @@ layout_mode = 1
 
 [node name="Hotbar" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("5_ik7v8")
 
 [node name="TextureRect" type="TextureRect" parent="UI/Hotbar"]
-layout_mode = 2
-offset_left = 57.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.0
 offset_top = -33.0
-offset_right = 263.0
+offset_right = 103.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = SubResource("AtlasTexture_j6iic")
 stretch_mode = 2
 
 [node name="HighlighContainer" type="HBoxContainer" parent="UI/Hotbar"]
-layout_mode = 0
-offset_left = 64.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
 offset_top = -24.0
-offset_right = 258.0
+offset_right = 98.0
 offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 6
 
 [node name="ColorRect" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]

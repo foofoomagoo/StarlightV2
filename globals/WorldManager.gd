@@ -14,7 +14,8 @@ var worlds = [
 	{
 		"world" : "Spring",
 		"init" : true,
-		"data" : []
+		"data" : [],
+		"tiles" : []
 	}
 	]
 
@@ -49,6 +50,10 @@ func on_sleep():
 	get_tree().paused = true
 	go_to_sleep.emit()
 
+
+func persist_tiles(data):
+	worlds[1]["tiles"] = data
+	print(worlds[1]["tiles"])
 
 func get_persist_data():
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
