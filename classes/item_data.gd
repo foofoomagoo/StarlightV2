@@ -8,6 +8,7 @@ class_name ItemData
 @export_multiline var HOVER_TEXT: String
 @export var STATIC: bool
 @export var SELL_VALUE: int
+@export var placeable: bool
 
 
 func use(index: int) -> void:

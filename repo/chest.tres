@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDataContainer" load_steps=6 format=3 uid="uid://dajwvikrshkce"]
+
+[ext_resource type="Script" path="res://classes/item_data_container.gd" id="1_1mr27"]
+[ext_resource type="Texture2D" uid="uid://diwxxma3n5ti4" path="res://ui/inventory_chopped.png" id="1_2322c"]
+[ext_resource type="Script" path="res://ui/inventory/inventory_data.gd" id="2_lddx8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cekyq"]
+atlas = ExtResource("1_2322c")
+region = Rect2(608, 175, 15, 18)
+
+[sub_resource type="Resource" id="Resource_3hfsl"]
+script = ExtResource("2_lddx8")
+slot_datas = Array[Resource("res://ui/inventory/slot_data.gd")]([null, null, null, null, null, null, null, null, null])
+
+[resource]
+script = ExtResource("1_1mr27")
+inventory = SubResource("Resource_3hfsl")
+ITEM_NAME = "Chest"
+ITEM_TEXTURE = SubResource("AtlasTexture_cekyq")
+ITEM_TYPE = "Artifact"
+STACKABLE = false
+HOVER_TEXT = "A chest used to hold things."
+STATIC = false
+SELL_VALUE = 10
+placeable = true

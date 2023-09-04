@@ -4,10 +4,11 @@ extends Control
 @onready var Slot = preload("res://ui/inventory/slot.tscn")
 @onready var item_grid: HBoxContainer = $MarginContainer/HBoxContainer
 @onready var highlights: HBoxContainer = $HighlighContainer
+@onready var placement_slot: Panel = $PlacementSlot
 
 var selected_index: int
-var previous_index: int
-var selected_hotbar_data
+#var previous_index: int
+#var selected_hotbar_data
 var children
 
 func _ready():
@@ -18,7 +19,6 @@ func _ready():
 
 func _highlight(index: int) -> void:
 	InventoryManager.selected_hotbar_data = inventory.slot_datas[index]
-#	selected_hotbar_data = inventory.slot_datas[index]
 	selected_index = index
 	for i in children:
 		i.color = Color("#8c714d00")
@@ -30,6 +30,10 @@ func _process(delta):
 		var slot_data = inventory.slot_datas[selected_index]
 		if slot_data:
 			slot_data.item_data.use(selected_index)
+	if inventory.slot_datas[selected_index].item_data.placeable:
+		placement_slot.visible = true
+		placement_slot.set_slot_data(inventory.slot_datas[selected_index])
+		placement_slot.position = get_global_mouse_position()
 
 func on_slot_clicked(index: int, button: int):
 	_highlight(index)
@@ -43,13 +47,11 @@ func _unhandled_key_input(event):
 		_highlight(event.keycode - KEY_1)
 	elif event.keycode == 57:
 		_highlight(8)
-#		hot_bar_use.emit(8)
 	elif event.keycode == 48:
 		_highlight(9)
-#		hot_bar_use.emit(9)
 
 
-func on_pickup(index: int) -> void:
+func on_pickup(index: int, data: SlotData) -> void:
 	var child = item_grid.get_children()
 	
 	child[index].set_slot_data(InventoryManager.inv.slot_datas[index])

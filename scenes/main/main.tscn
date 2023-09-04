@@ -1,6 +1,5 @@
-[gd_scene load_steps=27 format=3 uid="uid://cp5ihgml61hyt"]
+[gd_scene load_steps=30 format=3 uid="uid://cp5ihgml61hyt"]
 
-[ext_resource type="PackedScene" uid="uid://ced26kkb18c2h" path="res://entities/player/player.tscn" id="1_or634"]
 [ext_resource type="PackedScene" uid="uid://brlfpwr8gicc4" path="res://ui/ui.tscn" id="1_qqueq"]
 [ext_resource type="Script" path="res://scenes/main/MainCamera.gd" id="1_rcmua"]
 [ext_resource type="Script" path="res://scenes/main/GameWorld.gd" id="2_n6vs3"]
@@ -13,6 +12,9 @@
 [ext_resource type="Script" path="res://scenes/main/InGameMenu.gd" id="6_tru8f"]
 [ext_resource type="PackedScene" uid="uid://uvpyrcky7g6w" path="res://ui/player_stats.tscn" id="10_n4phs"]
 [ext_resource type="PackedScene" uid="uid://dys57p44ksvf" path="res://ui/stardate.tscn" id="11_b7yjn"]
+[ext_resource type="Texture2D" uid="uid://diwxxma3n5ti4" path="res://ui/inventory_chopped.png" id="11_fxskf"]
+[ext_resource type="PackedScene" uid="uid://dluqshxixerfe" path="res://ui/computer.tscn" id="15_t8yw0"]
+[ext_resource type="PackedScene" uid="uid://bh17kf1t8sr6e" path="res://ui/pickup_ui.tscn" id="16_polja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8u5hd"]
 atlas = ExtResource("6_myq1r")
@@ -44,6 +46,10 @@ region = Rect2(304, 364, 292, 132)
 atlas = ExtResource("5_qybty")
 region = Rect2(97, 320, 206, 31)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4qlf"]
+atlas = ExtResource("11_fxskf")
+region = Rect2(6, 149, 18, 18)
+
 [node name="Main" type="Node2D"]
 
 [node name="MainCamera" type="Camera2D" parent="."]
@@ -52,8 +58,6 @@ script = ExtResource("1_rcmua")
 
 [node name="GameWorld" type="Node2D" parent="."]
 script = ExtResource("2_n6vs3")
-
-[node name="Player" parent="GameWorld" instance=ExtResource("1_or634")]
 
 [node name="UI" parent="." instance=ExtResource("1_qqueq")]
 process_mode = 3
@@ -164,6 +168,19 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_suiy5")
 [node name="Inventory" parent="UI/InGameMenu" instance=ExtResource("3_n4jq7")]
 layout_mode = 1
 
+[node name="PlayerStats" parent="UI" instance=ExtResource("10_n4phs")]
+offset_left = 11.0
+offset_top = -9.0
+offset_right = 51.0
+offset_bottom = 31.0
+
+[node name="Stardate" parent="UI" instance=ExtResource("11_b7yjn")]
+
+[node name="Computer" parent="UI" instance=ExtResource("15_t8yw0")]
+visible = false
+
+[node name="PickupUI" parent="UI" instance=ExtResource("16_polja")]
+
 [node name="Hotbar" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 7
@@ -176,6 +193,7 @@ grow_vertical = 0
 script = ExtResource("5_ik7v8")
 
 [node name="TextureRect" type="TextureRect" parent="UI/Hotbar"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -189,6 +207,69 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("AtlasTexture_j6iic")
 stretch_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Hotbar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -32.0
+offset_right = 102.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("11_fxskf")
+region_rect = Rect2(287.461, 114.866, 33.2421, 59.1872)
+patch_margin_left = 7
+patch_margin_top = 10
+patch_margin_right = 7
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hotbar"]
+layout_mode = 0
+offset_left = -97.0
+offset_top = -25.0
+offset_right = -57.0
+offset_bottom = -7.0
+
+[node name="SlotTexture" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture2" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture3" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture4" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture5" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture6" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture7" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture8" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
+
+[node name="SlotTexture9" type="TextureRect" parent="UI/Hotbar/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t4qlf")
 
 [node name="HighlighContainer" type="HBoxContainer" parent="UI/Hotbar"]
 layout_mode = 1
@@ -208,12 +289,12 @@ theme_override_constants/separation = 6
 [node name="ColorRect" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-color = Color(0.329412, 0.266667, 0.180392, 0)
+color = Color(0.329412, 0.266667, 0.180392, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-color = Color(0.54902, 0.443137, 0.301961, 1)
+color = Color(0.329412, 0.266667, 0.180392, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="UI/Hotbar/HighlighContainer"]
 custom_minimum_size = Vector2(16, 16)
@@ -304,12 +385,6 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="PlayerStats" parent="UI" instance=ExtResource("10_n4phs")]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_right = 0.0
-grow_horizontal = 0
-
-[node name="Stardate" parent="UI" instance=ExtResource("11_b7yjn")]
+[node name="PlacementSlot" parent="UI/Hotbar" instance=ExtResource("5_821q5")]
+visible = false
+layout_mode = 0

@@ -13,6 +13,7 @@ var previous_dir
 var tilemap: TileMap
 
 func _ready():
+	print(position)
 	PlayerManager.player = self
 	tilemap = WorldManager.current_tilemap
 	animation.active = true
@@ -189,6 +190,7 @@ func execute_interaction():
 
 
 func _on_interact_area_area_entered(area):
+	area.travel = true
 	all_interactions.insert(0, area)
 
 func _on_interact_area_area_exited(area):

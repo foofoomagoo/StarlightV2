@@ -18,7 +18,6 @@ var key
 
 
 func _ready():
-	print(self)
 	if new:
 		new = false
 		set_empty_crop()
@@ -35,17 +34,6 @@ func set_empty_crop():
 		"crop_number" : null,
 		"data" : self
 	}
-	
-#	var crop_info: Dictionary = {
-#		"pos_x" : position.x,
-#		"pos_y" : position.y,
-#		"node" : self,
-#		"crop" : null,
-#		"grow_state" : null,
-#		"day_planted" : null,
-#		"watered" : watered,
-#		"new" : new
-#	}
 
 	CropManager.add_empty_crop(crop_info)
 
@@ -89,10 +77,6 @@ func tool_interact(tool: int):
 
 
 func get_watered():
-#	if InventoryManager.selected_hotbar_data.item_data.tool == 3:
-#	ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
-#	ground.visible = true
-#	ground.modulate = Color(1, 1, 1, .5)
 	watered = true
 	CropManager.water_crop(self)
 

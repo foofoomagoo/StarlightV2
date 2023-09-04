@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsm82i7rr6oyi"]
+
+[ext_resource type="Texture2D" uid="uid://diwxxma3n5ti4" path="res://ui/inventory_chopped.png" id="1_ci87q"]
+[ext_resource type="Script" path="res://ui/pickup_container.gd" id="2_ag057"]
+[ext_resource type="Texture2D" uid="uid://b678y1mfjlpsx" path="res://assets/item_carry.png" id="3_npi8f"]
+[ext_resource type="FontFile" uid="uid://dmicatk0vl3kj" path="res://assets/fonts/ARCADECLASSIC.TTF" id="4_3fpew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opx1s"]
+atlas = ExtResource("1_ci87q")
+region = Rect2(6, 149, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72asn"]
+atlas = ExtResource("3_npi8f")
+region = Rect2(0, 0, 16, 16)
+
+[node name="PickupContainer" type="NinePatchRect"]
+custom_minimum_size = Vector2(0, 25)
+texture = ExtResource("1_ci87q")
+region_rect = Rect2(34, 163, 56, 10)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 5
+patch_margin_bottom = 4
+script = ExtResource("2_ag057")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = SubResource("AtlasTexture_opx1s")
+
+[node name="TextureRect" type="TextureRect" parent="Image"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+texture = SubResource("AtlasTexture_72asn")
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 7.0
+offset_right = 63.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3fpew")
+theme_override_font_sizes/font_size = 8
+text = "Carrot"
+
+[node name="quantity" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 31.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3fpew")
+theme_override_font_sizes/font_size = 6
+text = "x2"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

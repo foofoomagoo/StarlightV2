@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgn8js73sdli2"]
+[gd_scene load_steps=14 format=3 uid="uid://dgn8js73sdli2"]
 
 [ext_resource type="Texture2D" uid="uid://biub0x00hducd" path="res://scenes/main/levels/ship.png" id="1_h25xi"]
 [ext_resource type="PackedScene" uid="uid://dg00h63ep7hqm" path="res://scenes/common/scene_transition.tscn" id="2_b8gjr"]
@@ -6,6 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://qfmj4278y0do" path="res://scenes/common/chest.tscn" id="4_30plp"]
 [ext_resource type="Texture2D" uid="uid://desdmkp2hxppu" path="res://assets/teleporter1-Sheet.png" id="5_et5mb"]
 [ext_resource type="Texture2D" uid="uid://dj8drsdr5o10" path="res://assets/SciFiFurniture1.1.png" id="6_oaj00"]
+[ext_resource type="PackedScene" uid="uid://2g7jr0yq2l6w" path="res://scenes/common/pickup.tscn" id="7_maxo4"]
+[ext_resource type="PackedScene" uid="uid://ced26kkb18c2h" path="res://entities/player/player.tscn" id="7_qxmeh"]
+[ext_resource type="Resource" uid="uid://xc3053anrjx8" path="res://repo/foods/tomato.tres" id="8_llscl"]
+[ext_resource type="Script" path="res://ui/inventory/slot_data.gd" id="9_7vjnj"]
+
+[sub_resource type="Resource" id="Resource_hw1bk"]
+script = ExtResource("9_7vjnj")
+item_data = ExtResource("8_llscl")
+quantity = 1
 
 [sub_resource type="Gradient" id="Gradient_unyxk"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -51,6 +60,13 @@ position = Vector2(-244, -19)
 scene_to_load = "res://scenes/main/levels/planet.tscn"
 
 [node name="YSort" type="Node2D" parent="."]
+
+[node name="Pickup" parent="YSort" instance=ExtResource("7_maxo4")]
+position = Vector2(42, 49)
+slot_data = SubResource("Resource_hw1bk")
+
+[node name="Player" parent="YSort" instance=ExtResource("7_qxmeh")]
+position = Vector2(42, 32)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-41, -48)

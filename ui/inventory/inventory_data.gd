@@ -54,12 +54,12 @@ func add_pickup(added_slot_data: SlotData) -> bool:
 	for index in slot_datas.size():
 		if slot_datas[index] and slot_datas[index].can_fully_merge_with(added_slot_data):
 			slot_datas[index].fully_merge_with(added_slot_data)
-			InventoryManager.picked_up(index)
+			InventoryManager.picked_up(index, added_slot_data)
 			return true
 			
 		if not slot_datas[index]:
 			slot_datas[index] = added_slot_data
-			InventoryManager.picked_up(index)
+			InventoryManager.picked_up(index, added_slot_data)
 			return true
 	return false
 

@@ -11,8 +11,8 @@ signal external_inventory_opened(inventory_data: InventoryData)
 var selected_hotbar_data: SlotData
 
 # Emits data of item that was just picked up
-func picked_up(index: int):
-	item_picked_up.emit(index)
+func picked_up(index: int, data: SlotData):
+	item_picked_up.emit(index, data)
 
 
 func subtract_quantity():

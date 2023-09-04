@@ -37,7 +37,7 @@ func set_inventory_data(inventory_data: InventoryData, equip_data: InventoryData
 	populate_equip(equip_data)
 
 
-func on_pickup(index: int) -> void:
+func on_pickup(index: int, data: SlotData) -> void:
 	var child = item_grid.get_children()
 	
 	child[index].set_slot_data(InventoryManager.inv.slot_datas[index])
