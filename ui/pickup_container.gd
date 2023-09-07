@@ -20,7 +20,7 @@ func _ready():
 
 func _process(delta):
 	if timer.time_left <= 3:
-		modulate.a -= .005
+		modulate.a -= .009
 
 
 func update_label():

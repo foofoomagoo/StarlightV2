@@ -1,5 +1,7 @@
 extends Node
 
+signal computer_open
+
 enum tools {AXE, PICKAXE, HOE, WATERINGCAN}
 enum environment_type {TREE, ROCK, TWIG}
 

@@ -45,24 +45,38 @@ patch_margin_right = 7
 patch_margin_bottom = 9
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 126.0
-offset_right = 281.0
-offset_bottom = 154.0
+visible = false
+layout_mode = 2
+offset_left = 199.0
+offset_top = 265.0
+offset_right = 445.0
+offset_bottom = 265.0
 theme_override_colors/default_color = Color(0.321569, 0.243137, 0.172549, 1)
 theme_override_fonts/normal_font = ExtResource("3_5an8u")
 theme_override_font_sizes/normal_font_size = 12
 text = "Would you like to eat a carrot? "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 146.0
-offset_right = 277.0
-offset_bottom = 172.0
+offset_left = 202.0
+offset_top = 265.0
+offset_right = 443.0
+offset_bottom = 315.0
+theme_override_constants/separation = 0
 
-[node name="YesBtn" type="Button" parent="VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TextContainer"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.321569, 0.243137, 0.172549, 1)
+theme_override_fonts/normal_font = ExtResource("3_5an8u")
+theme_override_font_sizes/normal_font_size = 12
+text = "WHat do you want."
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextContainer"]
+layout_mode = 2
+
+[node name="YesBtn" type="Button" parent="TextContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.321569, 0.243137, 0.172549, 1)
 theme_override_fonts/font = ExtResource("3_5an8u")
@@ -74,7 +88,7 @@ text = "Yes"
 flat = true
 alignment = 0
 
-[node name="NoBtn" type="Button" parent="VBoxContainer"]
+[node name="NoBtn" type="Button" parent="TextContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.321569, 0.243137, 0.172549, 1)
 theme_override_fonts/font = ExtResource("3_5an8u")
@@ -86,5 +100,5 @@ text = "No"
 flat = true
 alignment = 0
 
-[connection signal="pressed" from="VBoxContainer/YesBtn" to="." method="_on_yes_btn_pressed"]
-[connection signal="pressed" from="VBoxContainer/NoBtn" to="." method="_on_no_btn_pressed"]
+[connection signal="pressed" from="TextContainer/VBoxContainer/YesBtn" to="." method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="TextContainer/VBoxContainer/NoBtn" to="." method="_on_no_btn_pressed"]

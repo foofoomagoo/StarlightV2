@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://cp5ihgml61hyt"]
+[gd_scene load_steps=31 format=3 uid="uid://cp5ihgml61hyt"]
 
 [ext_resource type="PackedScene" uid="uid://brlfpwr8gicc4" path="res://ui/ui.tscn" id="1_qqueq"]
 [ext_resource type="Script" path="res://scenes/main/MainCamera.gd" id="1_rcmua"]
 [ext_resource type="Script" path="res://scenes/main/GameWorld.gd" id="2_n6vs3"]
+[ext_resource type="PackedScene" uid="uid://ced26kkb18c2h" path="res://entities/player/player.tscn" id="3_6iwjn"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="3_dxe1r"]
 [ext_resource type="PackedScene" uid="uid://cdj3bfmyo2clw" path="res://ui/inventory/inventory.tscn" id="3_n4jq7"]
 [ext_resource type="PackedScene" uid="uid://7dwk8c3s0ei8" path="res://ui/inventory/slot.tscn" id="5_821q5"]
@@ -58,6 +59,8 @@ script = ExtResource("1_rcmua")
 
 [node name="GameWorld" type="Node2D" parent="."]
 script = ExtResource("2_n6vs3")
+
+[node name="Player" parent="GameWorld" instance=ExtResource("3_6iwjn")]
 
 [node name="UI" parent="." instance=ExtResource("1_qqueq")]
 process_mode = 3
@@ -180,6 +183,9 @@ offset_bottom = 31.0
 visible = false
 
 [node name="PickupUI" parent="UI" instance=ExtResource("16_polja")]
+anchors_preset = 9
+anchor_right = 0.0
+grow_horizontal = 1
 
 [node name="Hotbar" type="Control" parent="UI"]
 layout_mode = 3
@@ -388,3 +394,14 @@ size_flags_vertical = 0
 [node name="PlacementSlot" parent="UI/Hotbar" instance=ExtResource("5_821q5")]
 visible = false
 layout_mode = 0
+
+[node name="Button" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "Crops"
+
+[connection signal="pressed" from="UI/Button" to="UI" method="_on_button_pressed"]

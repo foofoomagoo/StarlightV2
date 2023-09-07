@@ -17,29 +17,35 @@ var crop_selected: bool
 var key
 
 
+#func _ready():
+#	if new:
+#		new = false
+#		set_empty_crop()
+#	elif crop == null:
+#		load_empty_crop()
+#	elif crop != null:
+#		load_crop_info()
+
 func _ready():
 	if new:
-		new = false
-		set_empty_crop()
-	elif crop == null:
-		load_empty_crop()
-	elif crop != null:
+		plant_new_crop()
+	else:
 		load_crop_info()
 
 
-func set_empty_crop():
-	var crop_info: Dictionary = {
-		"pos_x" : position.x,
-		"pos_y" : position.y,
-		"crop_number" : null,
-		"data" : self
-	}
+#func set_empty_crop():
+#	var crop_info: Dictionary = {
+#		"pos_x" : position.x,
+#		"pos_y" : position.y,
+#		"crop_number" : null,
+#		"data" : self
+#	}
+#
+#	CropManager.add_empty_crop(crop_info)
 
-	CropManager.add_empty_crop(crop_info)
-
-func load_empty_crop():
-	if watered:
-		ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
+#func load_empty_crop():
+#	if watered:
+#		ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
 
 
 func load_crop_info():
@@ -47,9 +53,28 @@ func load_crop_info():
 	sprite.texture  = crop.crop_texture
 	sprite.hframes = crop.phases
 	sprite.set_frame(grow_state)
-	if watered:
-		ground.modulate = Color(0.647059, 0.164706, 0.164706, 1)
+	
 
+func plant_new_crop():
+	if WorldManager.current_tilemap.check_for_water(global_position):
+		watered = true
+	
+	new = false
+	days_to_grow = crop.time_to_grow
+	day_planted = TimeManager.day
+	grow_state = 0
+	sprite.texture  = crop.crop_texture
+	sprite.hframes = crop.phases
+	sprite.set_frame(grow_state)
+	
+	var crop_info: Dictionary = {
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"crop_number" : null,
+		"data" : self
+	}
+
+	CropManager.add_new_crop(crop_info)
 
 func set_crop(data: DataCrop):
 	if crop_selected and crop == null:
@@ -82,16 +107,18 @@ func get_watered():
 
 
 func _destroy():
-	if crop != null:
-		crop = null
-		sprite.texture = null
-		grow_state = 0
-		sprite.set_frame(0)
-	
-		CropManager.clear_crop(crop, watered)
-	else:
-		CropManager.remove_crop(crop)
-		queue_free()
+	CropManager.remove_crop(crop_number)
+	queue_free()
+#	if crop != null:
+#		crop = null
+#		sprite.texture = null
+#		grow_state = 0
+#		sprite.set_frame(0)
+#
+#		CropManager.clear_crop(crop, watered)
+#	else:
+#		CropManager.remove_crop(crop)
+#		queue_free()
 
 
 func _on_interact_area_mouse_entered():

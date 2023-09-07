@@ -18,3 +18,4 @@ STACKABLE = false
 HOVER_TEXT = "Yo mama."
 STATIC = false
 SELL_VALUE = 0
+placeable = false

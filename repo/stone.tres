@@ -16,3 +16,4 @@ STACKABLE = true
 HOVER_TEXT = "A stone used for stuff."
 STATIC = false
 SELL_VALUE = 5
+placeable = false

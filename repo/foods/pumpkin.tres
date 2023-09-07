@@ -18,3 +18,4 @@ STACKABLE = true
 HOVER_TEXT = "A huge pumpkin!"
 STATIC = false
 SELL_VALUE = 10
+placeable = false

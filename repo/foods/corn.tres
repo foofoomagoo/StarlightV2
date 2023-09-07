@@ -18,3 +18,4 @@ STACKABLE = true
 HOVER_TEXT = "An ear of corn. Hello?"
 STATIC = false
 SELL_VALUE = 100
+placeable = false

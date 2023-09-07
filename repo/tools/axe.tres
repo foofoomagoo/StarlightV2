@@ -18,3 +18,4 @@ STACKABLE = false
 HOVER_TEXT = "An axe used for chopping trees."
 STATIC = false
 SELL_VALUE = 0
+placeable = false

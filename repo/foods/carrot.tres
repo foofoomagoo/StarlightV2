@@ -18,3 +18,4 @@ STACKABLE = true
 HOVER_TEXT = "A delicious carrot."
 STATIC = false
 SELL_VALUE = 50
+placeable = false

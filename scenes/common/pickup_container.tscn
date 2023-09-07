@@ -45,7 +45,7 @@ offset_left = 24.0
 offset_top = 7.0
 offset_right = 63.0
 offset_bottom = 21.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_3fpew")
 theme_override_font_sizes/font_size = 8
 text = "Carrot"
@@ -56,13 +56,13 @@ offset_left = 18.0
 offset_top = 2.0
 offset_right = 31.0
 offset_bottom = 14.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_3fpew")
 theme_override_font_sizes/font_size = 6
 text = "x2"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

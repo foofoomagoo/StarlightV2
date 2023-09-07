@@ -30,10 +30,10 @@ func _process(delta):
 		var slot_data = inventory.slot_datas[selected_index]
 		if slot_data:
 			slot_data.item_data.use(selected_index)
-	if inventory.slot_datas[selected_index].item_data.placeable:
-		placement_slot.visible = true
-		placement_slot.set_slot_data(inventory.slot_datas[selected_index])
-		placement_slot.position = get_global_mouse_position()
+#	if inventory.slot_datas[selected_index].item_data.placeable:
+#		placement_slot.visible = true
+#		placement_slot.set_slot_data(inventory.slot_datas[selected_index])
+#		placement_slot.position = get_global_mouse_position()
 
 func on_slot_clicked(index: int, button: int):
 	_highlight(index)

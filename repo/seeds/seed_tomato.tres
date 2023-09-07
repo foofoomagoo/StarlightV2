@@ -18,3 +18,4 @@ STACKABLE = true
 HOVER_TEXT = "A seed to grow a tomato."
 STATIC = false
 SELL_VALUE = 5
+placeable = false

@@ -8,6 +8,23 @@ signal inventory_interact(inventory_data: InventoryData, index: int, button: int
 
 func on_slot_clicked(index: int, button: int) -> void:
 	inventory_interact.emit(self, index, button)
+	
+func on_slot_sell(index: int, button: int):
+	var slot_data = slot_datas[index]
+	
+	if slot_data and slot_data.item_data.SELL_VALUE != 0:
+		match button:
+			1: 
+				PlayerManager.add_money(slot_data.item_data.SELL_VALUE * slot_data.quantity)
+				slot_datas[index] = null
+			2: 
+				PlayerManager.add_money(slot_data.item_data.SELL_VALUE)
+				slot_data.quantity -= 1
+				if slot_data.quantity < 1:
+					slot_datas[index] = null
+			_:
+				print("Not a useful button.")
+	inventory_updated.emit(self)
 
 func grab_slot_data(index: int) -> SlotData:
 	var slot_data = slot_datas[index]

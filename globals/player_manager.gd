@@ -3,10 +3,12 @@ extends Node
 signal energy_tick(amount: int)
 signal health_tick(amount: int)
 signal use_consumable(item_data: ItemDataConsumable)
+signal added_money(amount: int)
 
 var player
 var player_health: int = 5
 var player_energy: int = 100
+var player_currency: int = 100
 var consuming: bool = false
 var timer
 
@@ -50,9 +52,10 @@ func use_energy(amount: int):
 
 
 func place_seed(data: DataCrop, index: int):
-	if timer.is_stopped():
-		timer.start()
-		player._seed(data)
+	if WorldManager.current_tilemap:
+		if timer.is_stopped():
+			timer.start()
+			player._seed(data)
 
 
 func replenish():
@@ -61,3 +64,8 @@ func replenish():
 	
 	health_tick.emit(8)
 	energy_tick.emit(-100)
+
+
+func add_money(amount: int):
+	player_currency += amount
+	added_money.emit(player_currency)

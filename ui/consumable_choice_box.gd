@@ -1,8 +1,8 @@
 extends Control
 
-@onready var label: RichTextLabel = $RichTextLabel
-@onready var yes_btn: Button = $VBoxContainer/YesBtn
-@onready var no_btn: Button = $VBoxContainer/NoBtn
+@onready var label: RichTextLabel = $TextContainer/RichTextLabel
+@onready var yes_btn: Button = $TextContainer/VBoxContainer/YesBtn
+@onready var no_btn: Button = $TextContainer/VBoxContainer/NoBtn
 
 var consumable_data: ItemDataConsumable
 

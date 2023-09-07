@@ -1,18 +1,45 @@
-[gd_scene load_steps=7 format=3 uid="uid://dluqshxixerfe"]
+[gd_scene load_steps=18 format=3 uid="uid://dluqshxixerfe"]
 
 [ext_resource type="Texture2D" uid="uid://diwxxma3n5ti4" path="res://ui/inventory_chopped.png" id="1_l3601"]
 [ext_resource type="Script" path="res://ui/computer.gd" id="1_pnlty"]
 [ext_resource type="FontFile" uid="uid://dmicatk0vl3kj" path="res://assets/fonts/ARCADECLASSIC.TTF" id="2_fbe1c"]
+[ext_resource type="Script" path="res://ui/store_container.gd" id="4_frc1k"]
+[ext_resource type="Script" path="res://ui/sell_inventory.gd" id="5_o5l3j"]
+[ext_resource type="Texture2D" uid="uid://dtmqj2v3bimsh" path="res://ui/inventory.png" id="5_prx8y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxrpl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5clh"]
 atlas = ExtResource("1_l3601")
 region = Rect2(3, 181, 74, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmefj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2p5"]
 atlas = ExtResource("1_l3601")
-region = Rect2(92, 113, 192, 77)
+region = Rect2(624, 48, 16, 16)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgogp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d3sp"]
+atlas = ExtResource("1_l3601")
+region = Rect2(592, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ylsj"]
+atlas = ExtResource("1_l3601")
+region = Rect2(323, 180, 10, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ddnwp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fvkqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn6dh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3i1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d7lx"]
+atlas = ExtResource("1_l3601")
+region = Rect2(288, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm54d"]
+atlas = ExtResource("5_prx8y")
+region = Rect2(91, 39, 194, 79)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p72eg"]
 
 [node name="Computer" type="Control"]
 layout_mode = 3
@@ -23,52 +50,177 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pnlty")
 
-[node name="Nav" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = 151.0
-offset_top = 91.0
-offset_right = 225.0
-offset_bottom = 131.0
-texture = SubResource("AtlasTexture_lxrpl")
-
-[node name="bg" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.258824, 0.443137, 0.741176, 1)
 layout_mode = 0
-offset_left = 22.0
-offset_top = 46.0
-offset_right = 301.0
-offset_bottom = 146.0
-texture = SubResource("AtlasTexture_gmefj")
+offset_left = 178.0
+offset_top = 28.0
+offset_right = 287.63
+offset_bottom = 68.0
+texture = SubResource("AtlasTexture_m5clh")
+expand_mode = 3
+
+[node name="Messages" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 35.0
+offset_bottom = 28.0
+texture = SubResource("AtlasTexture_gs2p5")
+stretch_mode = 4
+
+[node name="Store" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 10.0
+offset_right = 65.0
+offset_bottom = 28.0
+texture = SubResource("AtlasTexture_5d3sp")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 12.0
+offset_right = 94.0
+offset_bottom = 27.0
+texture = SubResource("AtlasTexture_2ylsj")
 
 [node name="textureframe" type="NinePatchRect" parent="."]
+modulate = Color(0.258824, 0.443137, 0.741176, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = -51.0
-offset_right = 153.0
-offset_bottom = 65.0
+anchors_preset = -1
+anchor_left = 0.482
+anchor_top = 0.53
+anchor_right = 0.482
+anchor_bottom = 0.53
+offset_left = -141.48
+offset_top = -112.6
+offset_right = 141.52
+offset_bottom = 112.4
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_l3601")
-region_rect = Rect2(-9, 13, 306, 99)
-patch_margin_left = 110
-patch_margin_top = 20
+region_rect = Rect2(288, 115, 32, 58)
+patch_margin_left = 22
+patch_margin_top = 10
 patch_margin_right = 21
-patch_margin_bottom = 23
+patch_margin_bottom = 7
 
-[node name="MsgSubjects" type="VBoxContainer" parent="."]
+[node name="Exit" type="Button" parent="textureframe"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 51.0
-offset_right = 100.0
-offset_bottom = 143.0
+offset_left = 282.0
+offset_top = -4.0
+offset_right = 306.0
+offset_bottom = 20.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ddnwp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fvkqh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dn6dh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3i1")
+icon = SubResource("AtlasTexture_6d7lx")
 
-[node name="Button" type="Button" parent="MsgSubjects"]
-layout_mode = 2
+[node name="Pages" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 173.0
+offset_top = 64.0
+offset_right = 445.0
+offset_bottom = 277.0
+
+[node name="Messages" type="Label" parent="Pages"]
+visible = false
+layout_mode = 0
+offset_top = 8.0
+offset_right = 273.0
+offset_bottom = 33.0
 theme_override_fonts/font = ExtResource("2_fbe1c")
-theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxEmpty_qgogp")
-text = "Your Daily Digest"
+text = "Messages"
+horizontal_alignment = 1
+
+[node name="StoreContainer" type="Control" parent="Pages"]
+visible = false
+anchors_preset = 0
+offset_right = 272.0
+offset_bottom = 112.0
+script = ExtResource("4_frc1k")
+
+[node name="StoreLabel" type="Label" parent="Pages/StoreContainer"]
+layout_mode = 2
+offset_right = 273.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("2_fbe1c")
+text = "Store"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Pages/StoreContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = 23.0
+offset_right = 97.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_bm54d")
+
+[node name="SellInventory" type="GridContainer" parent="Pages/StoreContainer"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 145.0
+offset_right = 229.0
+offset_bottom = 205.0
+theme_override_constants/h_separation = 5
+columns = 9
+script = ExtResource("5_o5l3j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/StoreContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+offset_top = 17.0
+offset_right = 273.0
+offset_bottom = 122.0
+
+[node name="Missions" type="Label" parent="Pages"]
+visible = false
+layout_mode = 0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_fbe1c")
+text = "Missions"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 37.0
+offset_right = 275.0
+offset_bottom = 57.0
+theme_override_constants/separation = 16
+
+[node name="MsgBtn" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p72eg")
+
+[node name="StoreBtn" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p72eg")
+
+[node name="MissionBtn" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p72eg")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="textureframe/Exit" to="." method="_on_button_pressed"]
+[connection signal="visibility_changed" from="Pages/StoreContainer" to="Pages/StoreContainer/SellInventory" method="_on_store_container_visibility_changed"]
+[connection signal="pressed" from="HBoxContainer/MsgBtn" to="." method="_on_msg_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/StoreBtn" to="." method="_on_store_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/MissionBtn" to="." method="_on_mission_btn_pressed"]

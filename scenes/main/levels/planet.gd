@@ -35,23 +35,30 @@ func _ready():
 
 
 func load_tiles():
-	var tiles = WorldManager.worlds[1]["tiles"]
+	var tiles = WorldManager.worlds[1]["tilled_tiles"]
 	
 	for i in tiles:
 		tilemap.set_cell(1, i, 3, Vector2i(0,0))
 	var dirt = tilemap.get_used_cells(1)
 	tilemap.set_cells_terrain_connect(1, dirt, 0, 1)
+	
+	var watered = WorldManager.worlds[1]["watered_tiles"]
+	
+	for i in watered:
+		tilemap.set_cell(2, i, 3, Vector2i(0,0))
+	var water = tilemap.get_used_cells(2)
+	tilemap.set_cells_terrain_connect(2, water, 0, 1)
 
 func load_crops():
 	for i in CropManager.crops:
 		var crop = crop_scene.instantiate()
 		crop.crop_number = i["crop_number"]
-		crop.crop = i["data"]["crop"]
+		crop.crop = i["data"].crop
 		crop.position = Vector2(i["pos_x"], i["pos_y"])
-		crop.grow_state = i["data"]["grow_state"]
-		crop.day_planted = i["data"]["day_planted"]
-		crop.watered = i["data"]["watered"]
-		crop.new = i["data"]["new"]
+		crop.grow_state = i["data"].grow_state
+		crop.day_planted = i["data"].day_planted
+		crop.watered = i["data"].watered
+		crop.new = i["data"].new
 		get_node("YSort").add_child(crop)
 
 

@@ -9,7 +9,6 @@ extends Node2D
 var travel: bool
 
 func _ready():
-	print(position)
 	animation.play("drop")
 	if slot_data:
 		sprite_2d.texture = slot_data.item_data.ITEM_TEXTURE

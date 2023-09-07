@@ -18,3 +18,4 @@ STACKABLE = false
 HOVER_TEXT = "Used for watering flowers."
 STATIC = false
 SELL_VALUE = 0
+placeable = false

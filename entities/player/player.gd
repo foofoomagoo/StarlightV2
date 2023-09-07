@@ -6,14 +6,13 @@ extends CharacterBody2D
 @onready var crop: PackedScene = preload("res://scenes/common/crop.tscn")
 @onready var raycast = $RayCast2D
 
-var speed: int = 50
+var speed: int = 100
 var current_tool: int
 var tool_array = ["axe", "pickaxe", "hoe", "water"]
 var previous_dir
 var tilemap: TileMap
 
 func _ready():
-	print(position)
 	PlayerManager.player = self
 	tilemap = WorldManager.current_tilemap
 	animation.active = true
@@ -23,6 +22,7 @@ func _ready():
 func _physics_process(delta):
 	if Globals.can_move:
 		move()
+
 	
 	
 #MOVEMENT CODE
@@ -59,26 +59,26 @@ func _unhandled_input(event):
 			get_viewport().set_input_as_handled()
 
 func get_direction(tool: String, mouse: Vector2):
-	if tilemap:
-		var closest_tile = tilemap.get_closest_tile(mouse, position)
-	
-		match closest_tile:
-			0 : 
-				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.RIGHT)
-				animation.set("parameters/Idle/blend_position", Vector2.RIGHT)
-				raycast.target_position = Vector2(16, 0)
-			1 : 
-				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.DOWN)
-				animation.set("parameters/Idle/blend_position", Vector2.DOWN)
-				raycast.target_position = Vector2(0, 16)
-			2 : 
-				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.LEFT)
-				animation.set("parameters/Idle/blend_position", Vector2.LEFT)
-				raycast.target_position = Vector2(-16, 0)
-			3 : 
-				animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.UP)
-				animation.set("parameters/Idle/blend_position", Vector2.UP)
-				raycast.target_position = Vector2(0, -16)
+		if tilemap:
+			var closest_tile = tilemap.get_closest_tile(mouse, position)
+		
+			match closest_tile:
+				0 : 
+					animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.RIGHT)
+					animation.set("parameters/Idle/blend_position", Vector2.RIGHT)
+					raycast.target_position = Vector2(16, 0)
+				1 : 
+					animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.DOWN)
+					animation.set("parameters/Idle/blend_position", Vector2.DOWN)
+					raycast.target_position = Vector2(0, 16)
+				2 : 
+					animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.LEFT)
+					animation.set("parameters/Idle/blend_position", Vector2.LEFT)
+					raycast.target_position = Vector2(-16, 0)
+				3 : 
+					animation.set("parameters/SwingTool/" + tool + "/blend_position", Vector2.UP)
+					animation.set("parameters/Idle/blend_position", Vector2.UP)
+					raycast.target_position = Vector2(0, -16)
 
 func swing_tool(tool: int):
 	var mouse_pos = get_global_mouse_position()
@@ -114,23 +114,20 @@ func stop_tool(tool: int):
 
 
 func use_hoe():
-	WorldManager.current_tilemap.highlight = true
-	var tile = animation.get("parameters/Idle/blend_position")
-	if WorldManager.current_tilemap and WorldManager.current_tilemap.check_if_farmable(position, tile):
-		if !raycast.is_colliding():
+	if WorldManager.current_tilemap:
+		WorldManager.current_tilemap.highlight = true
+		var tile = animation.get("parameters/Idle/blend_position")
+		if !raycast.is_colliding() and WorldManager.current_tilemap.check_if_farmable(position, tile):
 			var crop_pos = WorldManager.current_tilemap.get_mouse_pos_on_map(position, tile)
-			var item_instance = crop.instantiate()
-			item_instance.position = crop_pos
-			get_parent().add_child(item_instance)
 			WorldManager.current_tilemap.till(crop_pos)
 
 func _seed(data: DataCrop):
-	if raycast.is_colliding():
-		var target = raycast.get_collider()
+	if tilemap.check_ground() and tilemap.check_if_close_to_player(position):
+		var crop_instance = crop.instantiate()
+		crop_instance.crop = data
+		crop_instance.position = tilemap.get_map_pos(get_global_mouse_position())
+		get_parent().add_child(crop_instance)
 		
-		if target.interact_type == "crop" and target.get_parent().crop == null:
-			target.get_parent().set_crop(data)
-			InventoryManager.subtract_quantity()
 
 func get_tile_position(position: Vector2) -> Vector2:
 	var x = int(position.x / 16) * 16
@@ -149,10 +146,12 @@ func _on_animation_tree_animation_finished(anim_name):
 
 
 func use_watering_can():
-	var tile = animation.get("parameters/Idle/blend_position")
-	if tilemap.check_if_farmable(position, tile):
-		var crop_pos = WorldManager.current_tilemap.get_mouse_pos_on_map(position, tile)
-		tilemap.add_watered_tile(crop_pos)
+	if tilemap:
+		var tile = animation.get("parameters/Idle/blend_position")
+		if tilemap.check_if_farmable(position, tile):
+			var crop_pos = WorldManager.current_tilemap.get_mouse_pos_on_map(position, tile)
+			tilemap.add_watered_tile(crop_pos)
+		use_tool(current_tool)
 
 
 func get_movement_vector():

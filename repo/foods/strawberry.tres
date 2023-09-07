@@ -18,3 +18,4 @@ STACKABLE = true
 HOVER_TEXT = "A juicy strawberry."
 STATIC = false
 SELL_VALUE = 3
+placeable = false
