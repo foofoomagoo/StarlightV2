@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Store" load_steps=11 format=3 uid="uid://ow0siv1d8fga"]
+
+[ext_resource type="Script" path="res://classes/Store.gd" id="1_kxfvj"]
+[ext_resource type="Script" path="res://ui/inventory/inventory_data.gd" id="1_l4afi"]
+[ext_resource type="Resource" uid="uid://bpxssublbiu2f" path="res://repo/foods/carrot.tres" id="2_uckqq"]
+[ext_resource type="Script" path="res://ui/inventory/slot_data.gd" id="3_jtdad"]
+[ext_resource type="Resource" uid="uid://cwq5tpm36b5f0" path="res://repo/seeds/seed_corn.tres" id="4_iytix"]
+[ext_resource type="Resource" uid="uid://d1ibn3nwxn8o0" path="res://repo/wood.tres" id="5_25atn"]
+
+[sub_resource type="Resource" id="Resource_8dpli"]
+script = ExtResource("3_jtdad")
+item_data = ExtResource("2_uckqq")
+quantity = 20
+
+[sub_resource type="Resource" id="Resource_0rql3"]
+script = ExtResource("3_jtdad")
+item_data = ExtResource("4_iytix")
+quantity = 20
+
+[sub_resource type="Resource" id="Resource_73ch2"]
+script = ExtResource("3_jtdad")
+item_data = ExtResource("5_25atn")
+quantity = 3
+
+[sub_resource type="Resource" id="Resource_oavbn"]
+script = ExtResource("1_l4afi")
+slot_datas = Array[ExtResource("3_jtdad")]([SubResource("Resource_8dpli"), SubResource("Resource_0rql3"), SubResource("Resource_73ch2")])
+
+[resource]
+script = ExtResource("1_kxfvj")
+STORE_NAME = "Ship Store"
+DATE_ACTIVE = 1
+INVENTORY = SubResource("Resource_oavbn")

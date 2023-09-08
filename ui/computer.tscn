@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dluqshxixerfe"]
+[gd_scene load_steps=19 format=3 uid="uid://dluqshxixerfe"]
 
 [ext_resource type="Texture2D" uid="uid://diwxxma3n5ti4" path="res://ui/inventory_chopped.png" id="1_l3601"]
 [ext_resource type="Script" path="res://ui/computer.gd" id="1_pnlty"]
 [ext_resource type="FontFile" uid="uid://dmicatk0vl3kj" path="res://assets/fonts/ARCADECLASSIC.TTF" id="2_fbe1c"]
 [ext_resource type="Script" path="res://ui/store_container.gd" id="4_frc1k"]
+[ext_resource type="Resource" uid="uid://ow0siv1d8fga" path="res://repo/stores/ship.tres" id="5_2pf8m"]
 [ext_resource type="Script" path="res://ui/sell_inventory.gd" id="5_o5l3j"]
 [ext_resource type="Texture2D" uid="uid://dtmqj2v3bimsh" path="res://ui/inventory.png" id="5_prx8y"]
 
@@ -48,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_pnlty")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -124,6 +126,7 @@ offset_left = 173.0
 offset_top = 64.0
 offset_right = 445.0
 offset_bottom = 277.0
+mouse_filter = 1
 
 [node name="Messages" type="Label" parent="Pages"]
 visible = false
@@ -136,11 +139,12 @@ text = "Messages"
 horizontal_alignment = 1
 
 [node name="StoreContainer" type="Control" parent="Pages"]
-visible = false
 anchors_preset = 0
 offset_right = 272.0
 offset_bottom = 112.0
+mouse_filter = 1
 script = ExtResource("4_frc1k")
+store = ExtResource("5_2pf8m")
 
 [node name="StoreLabel" type="Label" parent="Pages/StoreContainer"]
 layout_mode = 2
@@ -175,12 +179,17 @@ theme_override_constants/h_separation = 5
 columns = 9
 script = ExtResource("5_o5l3j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pages/StoreContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="Pages/StoreContainer"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 265.0
+offset_bottom = 133.0
+horizontal_scroll_mode = 0
+
+[node name="BuyList" type="VBoxContainer" parent="Pages/StoreContainer/ScrollContainer"]
 layout_mode = 2
-offset_top = 17.0
-offset_right = 273.0
-offset_bottom = 122.0
+theme_override_constants/separation = 30
 
 [node name="Missions" type="Label" parent="Pages"]
 visible = false

@@ -176,16 +176,6 @@ func execute_interaction():
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
 		target.get_parent()._on_interact()
-#	if all_interactions:
-#		var distances = []
-#		for i in all_interactions:
-#			distances.append(position.distance_to(i.position))
-#		var min = distances.min()
-#		var current_interaction = all_interactions[distances.find(min)]
-#		match current_interaction.interact_type:
-#			"environment" : current_interaction.get_parent()._on_interact()
-#			"structure" : current_interaction.get_parent()._on_interact()
-#			"crop" : current_interaction.get_parent()._on_interact()
 
 
 func _on_interact_area_area_entered(area):

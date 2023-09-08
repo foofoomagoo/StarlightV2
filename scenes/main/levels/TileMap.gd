@@ -1,7 +1,5 @@
 extends TileMap
 
-@onready var highlight_box: ColorRect = $Highlight
-
 var highlight: bool
 var highlight_cell
 
@@ -34,25 +32,7 @@ func _process(delta):
 					else:
 						erase_cell(3, i)
 	else:
-		clear_layer(3)	
-#func _process(delta):
-#	var tool = InventoryManager.selected_hotbar_data.item_data
-#	clear_layer(3)
-#
-#	if tool is ItemDataTool and PlayerManager.player.velocity == Vector2.ZERO:
-#		var player_pos = local_to_map(PlayerManager.player.position)
-#		var tiles = get_surrounding_cells(player_pos)
-#		var mouse = local_to_map(get_local_mouse_position())
-#
-#		for i in tiles:
-#			if i == mouse:
-#				set_cell(3, i, 1, Vector2i(0, 0))
-		
-#		for i in tiles.size():
-#			if i == get_tile:
-#				set_cell(3, tiles[i], 1, Vector2i(0, 0))
-#			else:
-#				erase_cell(3, tiles[i])
+		clear_layer(3)
 		
 
 func add_watered_tile(crop: Vector2):

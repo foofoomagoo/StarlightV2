@@ -8,6 +8,21 @@ signal inventory_interact(inventory_data: InventoryData, index: int, button: int
 
 func on_slot_clicked(index: int, button: int) -> void:
 	inventory_interact.emit(self, index, button)
+
+
+func on_slot_buy(data: ItemData) -> bool:
+	if PlayerManager.player_currency >= data.BUY_VALUE:
+		var slot = SlotData.new()
+		slot.item_data = data
+		
+		if add_pickup(slot):
+			PlayerManager.add_money(-data.BUY_VALUE)
+			inventory_updated.emit(self)
+			return true
+		print("Not enough room.")
+		return false
+	print("You don't have enough.")
+	return false
 	
 func on_slot_sell(index: int, button: int):
 	var slot_data = slot_datas[index]

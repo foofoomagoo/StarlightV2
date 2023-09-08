@@ -16,4 +16,5 @@ STACKABLE = true
 HOVER_TEXT = "A wood used for building stuff."
 STATIC = false
 SELL_VALUE = 5
+BUY_VALUE = 10
 placeable = false

@@ -22,4 +22,5 @@ STACKABLE = false
 HOVER_TEXT = "A chest used to hold things."
 STATIC = false
 SELL_VALUE = 10
+BUY_VALUE = 0
 placeable = true

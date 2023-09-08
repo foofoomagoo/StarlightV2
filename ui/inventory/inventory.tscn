@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdj3bfmyo2clw"]
+[gd_scene load_steps=10 format=3 uid="uid://cdj3bfmyo2clw"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory.gd" id="1_165ho"]
 [ext_resource type="Texture2D" uid="uid://dtmqj2v3bimsh" path="res://ui/inventory.png" id="1_bdsqb"]
 [ext_resource type="PackedScene" uid="uid://7dwk8c3s0ei8" path="res://ui/inventory/slot.tscn" id="3_s3i6g"]
 [ext_resource type="Texture2D" uid="uid://dfi7fandwvyqb" path="res://entities/player/global.png" id="4_db13s"]
 [ext_resource type="Script" path="res://ui/inventory/external_inventory.gd" id="5_dakg3"]
-[ext_resource type="FontFile" uid="uid://dmicatk0vl3kj" path="res://assets/fonts/ARCADECLASSIC.TTF" id="5_xf4rm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aux0f"]
 atlas = ExtResource("1_bdsqb")
@@ -109,9 +108,9 @@ stretch_mode = 2
 [node name="InvPlayerPic" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 212.0
-offset_top = 147.0
+offset_top = 168.0
 offset_right = 224.0
-offset_bottom = 187.0
+offset_bottom = 208.0
 scale = Vector2(1.5, 1.5)
 texture = SubResource("AtlasTexture_fb1t2")
 stretch_mode = 3
@@ -119,11 +118,10 @@ stretch_mode = 3
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 196.0
-offset_top = 205.0
+offset_top = 223.0
 offset_right = 248.0
-offset_bottom = 217.0
+offset_bottom = 235.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_xf4rm")
 theme_override_font_sizes/font_size = 6
 text = "Scott"
 horizontal_alignment = 1

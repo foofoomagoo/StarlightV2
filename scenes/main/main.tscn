@@ -180,6 +180,7 @@ offset_bottom = 31.0
 [node name="Stardate" parent="UI" instance=ExtResource("11_b7yjn")]
 
 [node name="Computer" parent="UI" instance=ExtResource("15_t8yw0")]
+process_mode = 3
 visible = false
 
 [node name="PickupUI" parent="UI" instance=ExtResource("16_polja")]

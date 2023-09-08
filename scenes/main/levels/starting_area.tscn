@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgn8js73sdli2"]
+[gd_scene load_steps=13 format=3 uid="uid://dgn8js73sdli2"]
 
 [ext_resource type="Texture2D" uid="uid://biub0x00hducd" path="res://scenes/main/levels/ship.png" id="1_h25xi"]
 [ext_resource type="PackedScene" uid="uid://dg00h63ep7hqm" path="res://scenes/common/scene_transition.tscn" id="2_b8gjr"]
@@ -6,16 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://qfmj4278y0do" path="res://scenes/common/chest.tscn" id="4_30plp"]
 [ext_resource type="Texture2D" uid="uid://desdmkp2hxppu" path="res://assets/teleporter1-Sheet.png" id="5_et5mb"]
 [ext_resource type="Texture2D" uid="uid://dj8drsdr5o10" path="res://assets/SciFiFurniture1.1.png" id="6_oaj00"]
-[ext_resource type="PackedScene" uid="uid://2g7jr0yq2l6w" path="res://scenes/common/pickup.tscn" id="7_maxo4"]
-[ext_resource type="Resource" uid="uid://xc3053anrjx8" path="res://repo/foods/tomato.tres" id="8_llscl"]
-[ext_resource type="Script" path="res://ui/inventory/slot_data.gd" id="9_7vjnj"]
-[ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="10_pg7y3"]
-[ext_resource type="Script" path="res://scenes/main/levels/computer_node.gd" id="10_rubir"]
-
-[sub_resource type="Resource" id="Resource_hw1bk"]
-script = ExtResource("9_7vjnj")
-item_data = ExtResource("8_llscl")
-quantity = 1
+[ext_resource type="Script" path="res://scenes/main/levels/computer_node.gd" id="10_hso5x"]
+[ext_resource type="PackedScene" uid="uid://dsch8uuu6c8fg" path="res://scenes/common/interact_area.tscn" id="10_rk4dn"]
 
 [sub_resource type="Gradient" id="Gradient_unyxk"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -28,11 +20,10 @@ fill = 1
 fill_from = Vector2(0.525641, 0.508547)
 fill_to = Vector2(0.833333, 0.235043)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytgoq"]
-size = Vector2(11, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4n8y"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p642s"]
-radius = 19.6469
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0wtw"]
+radius = 24.1868
 
 [node name="StartingArea" type="Node2D"]
 
@@ -68,10 +59,6 @@ scene_to_load = "res://scenes/main/levels/planet.tscn"
 
 [node name="YSort" type="Node2D" parent="."]
 
-[node name="Pickup" parent="YSort" instance=ExtResource("7_maxo4")]
-position = Vector2(42, 49)
-slot_data = SubResource("Resource_hw1bk")
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-41, -48)
 texture = SubResource("GradientTexture2D_mlw83")
@@ -102,25 +89,25 @@ scale = Vector2(1, 0.36)
 script = ExtResource("3_hdmnm")
 
 [node name="Computer" type="StaticBody2D" parent="."]
-position = Vector2(88, 23)
+position = Vector2(85, 23)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("10_rubir")
+script = ExtResource("10_hso5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="Computer"]
-scale = Vector2(0.428571, 0.428571)
+scale = Vector2(0.47619, 0.47619)
 texture = ExtResource("6_oaj00")
 region_enabled = true
 region_rect = Rect2(406, 108, 92, 84)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer"]
-position = Vector2(1.5, 14)
-shape = SubResource("RectangleShape2D_ytgoq")
+position = Vector2(2, 9)
+shape = SubResource("RectangleShape2D_h4n8y")
 
-[node name="InteractArea" parent="Computer" instance=ExtResource("10_pg7y3")]
+[node name="InteractArea" parent="Computer" instance=ExtResource("10_rk4dn")]
 collision_layer = 16
 collision_mask = 0
+interact_type = "environment"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/InteractArea"]
-position = Vector2(1, -5)
-shape = SubResource("CircleShape2D_p642s")
+shape = SubResource("CircleShape2D_r0wtw")
